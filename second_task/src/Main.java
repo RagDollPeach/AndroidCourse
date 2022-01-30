@@ -21,7 +21,7 @@ public class Main {
         printString(string, firstDigit);
 
         System.out.println();
-        
+
         getYears(years);
     }
 
