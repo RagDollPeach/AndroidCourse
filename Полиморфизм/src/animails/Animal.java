@@ -1,9 +1,7 @@
 package animails;
 
-import java.util.Arrays;
-
 public class Animal {
-    private String name;
+    private final String name;
 
     public Animal(String name) {
         this.name = name;
@@ -18,7 +16,7 @@ public class Animal {
     }
 
     public void print(String animal) {
-        System.out.println(this.name + " " + animal);
+        System.out.println(name + " " + animal);
     }
 
     public static void count(Animal[] animals) {
