@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="174fab9a-eeba-40be-b12f-5cb9992f05e5" name="Changes" comment="" />
+    <list default="true" id="7c1e0670-6ab5-4eae-a188-1103dae3c05d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,7 +13,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="27wQn1hFzlbAVcokaMXItUK8tcM" />
+  <component name="ProjectId" id="27wXfRdeJGG6gtiF2HcsJSq5iBu" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -27,26 +24,21 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/GeekBrains/Java/Массивы",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
+    "last_opened_file_path": "D:/GeekBrains/Java/Полиморфизм",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="174fab9a-eeba-40be-b12f-5cb9992f05e5" name="Changes" comment="" />
-      <created>1650228832061</created>
+      <changelist id="7c1e0670-6ab5-4eae-a188-1103dae3c05d" name="Changes" comment="" />
+      <created>1650232224228</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1650228832061</updated>
-      <workItem from="1650228833311" duration="139000" />
-      <workItem from="1650231803772" duration="322000" />
+      <updated>1650232224228</updated>
+      <workItem from="1650232225443" duration="53000" />
     </task>
     <servers />
   </component>

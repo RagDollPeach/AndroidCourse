@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99c23f13-816b-4c81-b23e-19df6a69bd9e" name="Changes" comment="test" />
+    <list default="true" id="99c23f13-816b-4c81-b23e-19df6a69bd9e" name="Changes" comment="Solution 1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,7 +27,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/GeekBrains/Java/Многопоточность 2",
+    "last_opened_file_path": "D:/GeekBrains/Java/Многопоточность",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -38,6 +38,31 @@
     "settings.editor.selected.configurable": "project.propVCSSupport.Mappings"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GeekBrains\Java\MultiStream\src\main\java\com\example\multiplay" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="MainClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.multiplay.MainClass" />
+      <module name="MultyStream2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.multiplay.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainClass" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -49,6 +74,7 @@
       <workItem from="1650228975270" duration="391000" />
       <workItem from="1650229651515" duration="736000" />
       <workItem from="1650230411779" duration="202000" />
+      <workItem from="1650231091639" duration="703000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1650230375412</created>
@@ -57,7 +83,21 @@
       <option name="project" value="LOCAL" />
       <updated>1650230375412</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Solution">
+      <created>1650231233116</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1650231233116</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Solution 1">
+      <created>1650231647139</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1650231647139</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -76,6 +116,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="Solution" />
+    <MESSAGE value="Solution 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Solution 1" />
   </component>
 </project>
