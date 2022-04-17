@@ -1,3 +1,5 @@
+package com.example.multiplay;
+
 public class Road extends Stage {
 
     public Road(int length) {

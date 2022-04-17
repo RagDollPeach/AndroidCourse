@@ -1,3 +1,5 @@
+package com.example.multiplay;
+
 public abstract class Stage {
 
     protected int length;

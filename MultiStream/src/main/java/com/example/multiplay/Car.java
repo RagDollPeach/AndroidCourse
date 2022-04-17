@@ -1,3 +1,5 @@
+package com.example.multiplay;
+
 public class Car implements Runnable {
 
     private static int CARS_COUNT;

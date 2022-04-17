@@ -1,3 +1,5 @@
+package com.example.multiplay;
+
 public class Tunnel extends Stage {
 
     public Tunnel() {
