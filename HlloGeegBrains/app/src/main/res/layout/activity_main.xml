@@ -1,64 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:visibility="visible"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/my_button"
-        android:textSize="25sp"
         android:layout_gravity="center"
+        android:layout_marginTop="25sp"
+        android:onClick="onMyClick"
+        android:text="@string/my_button"
+        android:textColor="#FF5722"
+        android:textSize="25sp" />
 
-        />
 
     <TextView
         android:id="@+id/textView"
+        android:layout_width="210sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25sp"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="@color/purple_200"
+        android:textSize="25sp"
+        android:visibility="invisible" />
+
+    <Switch
+        android:id="@+id/switch1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"/>
+        android:layout_marginTop="25sp"
+        android:minHeight="48dp"
+        android:text="@string/Switch"
+        android:textSize="25sp" />
 
-    <ImageView
-        android:id="@+id/imageView"
+    <CheckBox
+        android:id="@+id/checkBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_marginTop="25sp"
+        android:text="@string/checkbox" />
 
-    <RadioGroup
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25sp"
+        android:gravity="center"
+        android:text="@string/its_a_life"
+        android:textColor="@color/design_default_color_error"
+        android:textSize="25sp"
+        android:visibility="invisible" />
 
-        <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="RadioButton" />
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25sp"
+        android:onClick="onClick"
+        android:text="@string/togglebutton" />
 
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="RadioButton" />
-
-        <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="RadioButton" />
-
-        <Switch
-            android:id="@+id/switch1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:text="Switch" />
-    </RadioGroup>
-
+    <Button
+        android:id="@+id/button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25sp"
+        android:text="@string/switch_activity"
+        android:textColor="#CDDC39"
+        android:textSize="20sp" />
 
 </LinearLayout>
