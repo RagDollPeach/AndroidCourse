@@ -18,4 +18,5 @@
     <string name="divine">/</string>
     <string name="equals">=</string>
     <string name="press_the_button">Press the button</string>
+    <string name="text_view_ru">Введите число</string>
 </resources>
