@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,22 +21,22 @@
         <EditText
             android:id="@+id/editText"
             style="@style/my_text_view_style"
-            android:layout_width="match_parent"
-            android:layout_margin="30dp"
+            android:layout_width="352dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.476"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="DuplicateSpeakableTextCheck,LabelFor"
-            android:autofillHints="false" />
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
-    <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="match_parent"
-        android:layout_margin="25dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        >
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"
+            >
 
             <TableRow
                 android:layout_width="match_parent"
@@ -45,8 +45,8 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_7"
                     style="@style/my_digits_button_style"
-                    android:text="@string/_7"
                     android:onClick="writeDigits"
+                    android:text="@string/_7"
                     />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -92,7 +92,7 @@
                     android:text="@string/_6" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button_multiply"
+                    android:id="@+id/button_multi_ply"
                     style="@style/my_operation_button_style"
                     android:onClick="operations"
                     android:text="@string/multiply" />
@@ -148,6 +148,7 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_dot"
                     style="@style/my_digits_button_style"
+                    android:onClick="writeDigits"
                     android:text="@string/dot" />
 
                 <androidx.appcompat.widget.AppCompatButton

@@ -1,5 +1,6 @@
 package com.example.mycalculator;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -8,115 +9,90 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText onDisplay;
-
+    private EditText display;
+    private String operation;
+    private String firstNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        onDisplay = findViewById(R.id.editText);
-        onDisplay.setShowSoftInputOnFocus(false);
-
+        display = findViewById(R.id.editText);
+        display.setShowSoftInputOnFocus(false);
     }
 
-    private void writeDigits(String inputDigit) {
-        String str = onDisplay.getText().toString();
-        int pos = onDisplay.getSelectionStart();
-        String leftStr = str.substring(0, pos);
-        String rightStr = str.substring(pos);
-        onDisplay.setText(String.format("%s%s%s", leftStr, inputDigit, rightStr));
-        onDisplay.setSelection(pos + 1);
+    @SuppressLint("NonConstantResourceId")
+    public void writeDigits(View view) {
+        String digit = display.getText().toString();
+        switch (view.getId()) {
+            case R.id.button_dot:
+                digit = digit + ".";
+                break;
+            case R.id.button_0:
+                digit = digit + "0";
+                break;
+            case R.id.button_1:
+                digit = digit + "1";
+                break;
+            case R.id.button_2:
+                digit = digit + "2";
+                break;
+            case R.id.button_3:
+                digit = digit + "3";
+                break;
+            case R.id.button_4:
+                digit = digit + "4";
+                break;
+            case R.id.button_5:
+                digit = digit + "5";
+                break;
+            case R.id.button_6:
+                digit = digit + "6";
+                break;
+            case R.id.button_7:
+                digit = digit + "7";
+                break;
+            case R.id.button_8:
+                digit = digit + "8";
+                break;
+            case R.id.button_9:
+                digit = digit + "9";
+                break;
+        }
+        display.setText(digit);
     }
 
-    public void zeroButton(View view) {
-        writeDigits("0");
-    }
-
-    public void oneButton(View view) {
-        writeDigits("1");
-    }
-
-    public void twoButton(View view) {
-        writeDigits("2");
-    }
-
-    public void threeButton(View view) {
-        writeDigits("3");
-    }
-
-    public void fourButton(View view) {
-        writeDigits("4");
-    }
-
-    public void fiveButton(View view) {
-        writeDigits("5");
-    }
-
-    public void sixButton(View view) {
-        writeDigits("6");
-    }
-
-    public void sevenButton(View view) {
-        writeDigits("7");
-    }
-
-    public void eightButton(View view) {
-        writeDigits("8");
-    }
-
-    public void nineButton(View view) {
-        writeDigits("9");
-    }
-
-    public void dotButton(View view) {
-        writeDigits(".");
-    }
-
-    public void divineButton(View view) {
-        writeDigits("/");
-    }
-
-    public void multiplyButton(View view) {
-        writeDigits("*");
-    }
-
-    public void minusButton(View view) {
-        writeDigits("-");
-    }
-
-    public void plusButton(View view) {
-        writeDigits("+");
+    @SuppressLint("NonConstantResourceId")
+    public void operations(View view) {
+        firstNumber = display.getText().toString();
+        switch (view.getId()) {
+            case R.id.button_divine:
+                operation = "/";
+                break;
+            case R.id.button_multiply:
+                operation = "*";
+                break;
+            case R.id.button_minus:
+                operation = "-";
+                break;
+            case R.id.button_plus:
+                operation = "+";
+                break;
+        }
+        display.setText(operation);
     }
 
     public void equalsButton(View view) {
-        String str = onDisplay.getText().toString();
-        String[] saint = str.split("[\\d]");
-        String[] digits = str.split("[\\D]");
-        double firstDigit = Double.parseDouble(digits[0]);
-        double secondDigit = Double.parseDouble(digits[1]);
-        for (String s : saint) {
-            if (s.equals("/")) {
-                double result = firstDigit / secondDigit;
-                onDisplay.setText(String.valueOf(result));
-            }
-            if (s.equals("*")) {
-                double result = firstDigit * secondDigit;
-                onDisplay.setText(String.valueOf(result));
-            }
-            if (s.equals("-")) {
-                double result = firstDigit - secondDigit;
-                onDisplay.setText(String.valueOf(result));
-            }
-            if (s.equals("+")) {
-                double result = firstDigit + secondDigit;
-                onDisplay.setText(String.valueOf(result));
-            }
-        }
+        Calculator calculator = new Calculator();
+        String lastNumber = display.getText().toString();
+        double first = Double.parseDouble(firstNumber);
+        double second = Double.parseDouble(lastNumber.substring(1));
+        double result = calculator.calculate(operation, first, second);
+        display.setText(String.valueOf(result));
     }
 
     public void clear(View view) {
-        onDisplay.setText("");
+        display.setText("");
     }
 }
