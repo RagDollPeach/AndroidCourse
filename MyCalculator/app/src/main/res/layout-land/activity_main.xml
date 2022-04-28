@@ -34,8 +34,9 @@
         <TableLayout
             android:id="@+id/tableLayout"
             android:layout_width="match_parent"
-            android:layout_margin="10dp"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+
             >
 
             <TableRow
@@ -46,8 +47,7 @@
                     android:id="@+id/button_7"
                     style="@style/my_digits_button_style"
                     android:onClick="writeDigits"
-                    android:text="@string/_7"
-                    />
+                    android:text="@string/_7" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_8"
@@ -92,7 +92,7 @@
                     android:text="@string/_6" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button_multi_ply"
+                    android:id="@+id/button_multiply"
                     style="@style/my_operation_button_style"
                     android:onClick="operations"
                     android:text="@string/multiply" />
@@ -148,7 +148,6 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_dot"
                     style="@style/my_digits_button_style"
-                    android:onClick="writeDigits"
                     android:text="@string/dot" />
 
                 <androidx.appcompat.widget.AppCompatButton

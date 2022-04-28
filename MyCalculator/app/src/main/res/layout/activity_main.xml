@@ -23,20 +23,19 @@
             style="@style/my_text_view_style"
             android:layout_width="match_parent"
             android:layout_margin="30dp"
+            android:autofillHints="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.476"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="DuplicateSpeakableTextCheck,LabelFor"
-            android:autofillHints="false" />
+            tools:ignore="DuplicateSpeakableTextCheck,LabelFor" />
 
-    <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="match_parent"
-        android:layout_margin="25dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        >
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:layout_marginTop="120dp">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -45,9 +44,8 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_7"
                     style="@style/my_digits_button_style"
-                    android:text="@string/_7"
                     android:onClick="writeDigits"
-                    />
+                    android:text="@string/_7" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_8"
