@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="edit_text_layout_margin_portrait">30dp</dimen>
+    <dimen name="edit_text_text_size">36dp</dimen>
+    <dimen name="Table_layout_layout_margin_portrait">20dp</dimen>
+    <dimen name="Table_layout_layout_margin_top_portrait">120dp</dimen>
+    <dimen name="edit_text_layout_with_landscape">350dp</dimen>
+    <dimen name="edit_text_layout_height_landscape">60dp</dimen>
+    <dimen name="edit_text_marginStart_landscape">120dp</dimen>
+    <dimen name="edit_text_marginTop_landscape">10sp</dimen>
+    <dimen name="table_layout_margin_landscape">10sp</dimen>
+    <dimen name="buttons_text_size">25sp</dimen>
+    <dimen name="text_view_layout_height">60dp</dimen>
+    <dimen name="buttons_layout_margin">4dp</dimen>
+    <dimen name="buttons_layout_width">0dp</dimen>
+    <dimen name="buttons_corners_radius">40dp</dimen>
+</resources>
