@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--BUTTONS STYLE-->
     <style name="my_buttons_style" parent="@style/Widget.AppCompat.Button.Colored">
         <item name="android:layout_width">@dimen/buttons_layout_width</item>
         <item name="android:layout_margin">@dimen/buttons_layout_margin</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">?attr/textColor</item>
         <item name="android:textSize">@dimen/buttons_text_size</item>
         <item name="android:background">@drawable/digits_buttons_round</item>
     </style>
 
+    <!--TEXT VIEW STYLE-->
     <style name="my_text_view_style" parent="@style/Widget.Design.ScrimInsetsFrameLayout">
         <item name="android:layout_height">@dimen/text_view_layout_height</item>
         <item name="android:background">@drawable/text_frame</item>
@@ -18,10 +20,28 @@
         <item name="android:textAlignment">textEnd</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">@dimen/edit_text_text_size</item>
+        <item name="android:fontFamily">@font/amarante</item>
     </style>
 
-    <style name="my_buttons_theme_night" parent="Theme.MyCalculator">
-            <item name="android:fontFamily">@font/amarante</item>
+    <!--RADIO BUTTONS STYLE-->
+    <style name="my_radio_button_style" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/radio_button_layout_height</item>
+        <item name="android:buttonTint">@color/green</item>
+        <item name="android:textSize">@dimen/edit_text_text_size</item>
+        <item name="android:fontFamily">@font/amarante</item>
     </style>
 
+    <!--THEMES-->
+    <style name="my_theme_light" parent="AppTheme">
+        <item name="toolBarColor">@color/purple_500</item>
+        <item name="android:fontFamily">@font/amarante</item>
+        <item name="textColor">@color/white</item>
+    </style>
+
+    <style name="my_theme_night" parent="AppTheme">
+        <item name="toolBarColor">@color/black</item>
+        <item name="android:fontFamily">@font/aguafina_script</item>
+        <item name="textColor">@color/red</item>
+    </style>
 </resources>

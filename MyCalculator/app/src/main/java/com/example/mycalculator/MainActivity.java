@@ -1,15 +1,19 @@
 package com.example.mycalculator;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private String operation;
     private String firstNumber;
     private String lastNumber;
+    private RadioButton lightMode;
+    private RadioButton nightMode;
 
     private final String num1 = "num1";
     private final String savedDisplay = "display";
@@ -26,11 +32,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(R.style.Theme_MyCalculator);
         setContentView(R.layout.activity_main);
 
         display = findViewById(R.id.editText);
         display.setShowSoftInputOnFocus(false);
+
+        lightMode = findViewById(R.id.radioButtonLight);
+        nightMode = findViewById(R.id.radioButtonNight);
+
     }
 
     @Override
