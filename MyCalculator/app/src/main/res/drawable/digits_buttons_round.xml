@@ -3,7 +3,7 @@
     <item>
         <shape android:shape="rectangle"
             android:thickness="0dp">
-            <corners android:radius="100dp"/>
+            <corners android:radius="@dimen/buttons_corners_radius"/>
 
             <stroke
                 android:width="2dp"

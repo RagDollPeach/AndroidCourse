@@ -19,4 +19,7 @@
     <string name="equals">=</string>
     <string name="press_the_button">Press the button</string>
     <string name="text_view_ru">Введите число</string>
+    <string name="dark_theme">Темная тема</string>
+    <string name="light_theme">Light theme</string>
+    <string name="night_theme">Night theme</string>
 </resources>

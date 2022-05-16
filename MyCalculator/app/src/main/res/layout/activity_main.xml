@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -17,12 +18,11 @@
         tools:context=".MainActivity"
         tools:layout_editor_absoluteX="1dp">
 
-
         <EditText
             android:id="@+id/editText"
             style="@style/my_text_view_style"
             android:layout_width="match_parent"
-            android:layout_margin="30dp"
+            android:layout_margin="@dimen/edit_text_layout_margin_portrait"
             android:autofillHints="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.476"
@@ -34,8 +34,8 @@
             android:id="@+id/tableLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="25dp"
-            android:layout_marginTop="120dp">
+            android:layout_margin="@dimen/Table_layout_layout_margin_portrait"
+            android:layout_marginTop="@dimen/Table_layout_layout_margin_top_portrait">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -43,25 +43,26 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_7"
-                    style="@style/my_digits_button_style"
+                    style="@style/my_buttons_style"
                     android:onClick="writeDigits"
                     android:text="@string/_7" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_8"
-                    style="@style/my_digits_button_style"
+                    style="@style/my_buttons_style"
                     android:onClick="writeDigits"
                     android:text="@string/_8" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_9"
-                    style="@style/my_digits_button_style"
+                    style="@style/my_buttons_style"
                     android:onClick="writeDigits"
                     android:text="@string/_9" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_divine"
-                    style="@style/my_operation_button_style"
+                    style="@style/my_buttons_style"
+                    android:background="@drawable/operation_buttons"
                     android:onClick="operations"
                     android:text="@string/divine" />
 
@@ -73,25 +74,26 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_4"
-                    style="@style/my_digits_button_style"
+                    style="@style/my_buttons_style"
                     android:onClick="writeDigits"
                     android:text="@string/_4" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_5"
-                    style="@style/my_digits_button_style"
+                    style="@style/my_buttons_style"
                     android:onClick="writeDigits"
                     android:text="@string/_5" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_6"
-                    style="@style/my_digits_button_style"
+                    style="@style/my_buttons_style"
                     android:onClick="writeDigits"
                     android:text="@string/_6" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_multiply"
-                    style="@style/my_operation_button_style"
+                    style="@style/my_buttons_style"
+                    android:background="@drawable/operation_buttons"
                     android:onClick="operations"
                     android:text="@string/multiply" />
 
@@ -103,25 +105,26 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_1"
-                    style="@style/my_digits_button_style"
+                    style="@style/my_buttons_style"
                     android:onClick="writeDigits"
                     android:text="@string/_1" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_2"
-                    style="@style/my_digits_button_style"
+                    style="@style/my_buttons_style"
                     android:onClick="writeDigits"
                     android:text="@string/_2" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_3"
-                    style="@style/my_digits_button_style"
+                    style="@style/my_buttons_style"
                     android:onClick="writeDigits"
                     android:text="@string/_3" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_minus"
-                    style="@style/my_operation_button_style"
+                    style="@style/my_buttons_style"
+                    android:background="@drawable/operation_buttons"
                     android:onClick="operations"
                     android:text="@string/minus" />
 
@@ -133,24 +136,27 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_clear"
-                    style="@style/my_clear_button_style"
+                    style="@style/my_buttons_style"
+                    android:background="@drawable/clear_button"
                     android:onClick="clear"
                     android:text="@string/clear" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_0"
-                    style="@style/my_digits_button_style"
+                    style="@style/my_buttons_style"
                     android:onClick="writeDigits"
                     android:text="@string/_0" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_dot"
-                    style="@style/my_digits_button_style"
+                    style="@style/my_buttons_style"
+                    android:onClick="writeDigits"
                     android:text="@string/dot" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_plus"
-                    style="@style/my_operation_button_style"
+                    style="@style/my_buttons_style"
+                    android:background="@drawable/operation_buttons"
                     android:onClick="operations"
                     android:text="@string/plus" />
             </TableRow>
@@ -161,15 +167,35 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_equals"
-                    style="@style/my_equal_button_style"
-                    android:layout_height="56dp"
+                    style="@style/my_buttons_style"
+
+                    android:background="@drawable/equal_button"
                     android:onClick="equalsButton"
                     android:text="@string/equals"
-                    android:textSize="25sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
             </TableRow>
         </TableLayout>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radioButtonLight"
+                style="@style/my_radio_button_style"
+                android:text="@string/light_theme"
+                android:onClick="switchTheme"
+                android:textColor="@color/white" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radioButtonNight"
+                android:onClick="switchTheme"
+                style="@style/my_radio_button_style"
+                android:text="@string/night_theme"
+                android:textColor="@color/red" />
+        </RadioGroup>
     </LinearLayout>
 </ScrollView>
