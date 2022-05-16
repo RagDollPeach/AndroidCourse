@@ -6,12 +6,12 @@
             <corners android:radius="100dp"/>
 
             <stroke
-                android:width="5dp"
+                android:width="2dp"
                 android:color="@color/red" />
             <gradient
                 android:angle="270"
-                android:endColor="@color/black"
-                android:startColor="#C8C8C8"
+                android:endColor="#B5A82D"
+                android:startColor="#050505"
                 android:type="linear" />
         </shape>
     </item>

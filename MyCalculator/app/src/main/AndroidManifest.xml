@@ -10,10 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyCalculator">
         <activity
-            android:name=".ActivityLinear"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
+            android:screenOrientation="fullSensor"
             android:exported="true"
             android:windowSoftInputMode = "stateHidden">
             <intent-filter>
