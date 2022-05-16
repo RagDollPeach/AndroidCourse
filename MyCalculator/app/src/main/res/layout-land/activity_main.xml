@@ -2,12 +2,10 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollView2"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:id="@+id/scroll_view"
     android:background="@drawable/girl"
-    tools:context=".MainActivity"
-    tools:layout_editor_absoluteX="1dp">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/edit_text"
             style="@style/my_text_view_style"
             android:layout_width="@dimen/edit_text_layout_with_landscape"
             android:layout_height="@dimen/edit_text_layout_height_landscape"
@@ -32,7 +30,7 @@
             tools:ignore="DuplicateSpeakableTextCheck,LabelFor" />
 
         <TableLayout
-            android:id="@+id/tableLayout"
+            android:id="@+id/table_layout"
             android:layout_width="@dimen/edit_text_layout_with_landscape"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/table_layout_margin_landscape">
@@ -62,8 +60,8 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_divine"
                     style="@style/my_buttons_style"
-                    android:onClick="operations"
                     android:background="@drawable/operation_buttons"
+                    android:onClick="operations"
                     android:text="@string/divine" />
 
             </TableRow>
@@ -93,8 +91,8 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_multiply"
                     style="@style/my_buttons_style"
-                    android:onClick="operations"
                     android:background="@drawable/operation_buttons"
+                    android:onClick="operations"
                     android:text="@string/multiply" />
 
             </TableRow>
@@ -124,8 +122,8 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_minus"
                     style="@style/my_buttons_style"
-                    android:onClick="operations"
                     android:background="@drawable/operation_buttons"
+                    android:onClick="operations"
                     android:text="@string/minus" />
 
             </TableRow>
@@ -137,8 +135,8 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_clear"
                     style="@style/my_buttons_style"
-                    android:onClick="clear"
                     android:background="@drawable/clear_button"
+                    android:onClick="clear"
                     android:text="@string/clear" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -150,13 +148,14 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_dot"
                     style="@style/my_buttons_style"
+                    android:onClick="writeDigits"
                     android:text="@string/dot" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_plus"
                     style="@style/my_buttons_style"
-                    android:onClick="operations"
                     android:background="@drawable/operation_buttons"
+                    android:onClick="operations"
                     android:text="@string/plus" />
             </TableRow>
 
@@ -167,13 +166,33 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_equals"
                     style="@style/my_buttons_style"
+                    android:background="@drawable/equal_button"
                     android:onClick="equalsButton"
                     android:text="@string/equals"
-                    android:background="@drawable/equal_button"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+                    app:layout_constraintTop_toBottomOf="@+id/table_layout" />
             </TableRow>
         </TableLayout>
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radio_button_light"
+                style="@style/my_radio_button_style"
+                android:text="@string/light_theme"
+                android:textColor="@color/white"
+                android:fontFamily="@font/amarante"/>
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radio_button_night"
+                style="@style/my_radio_button_style"
+                android:text="@string/night_theme"
+                android:textColor="@color/red"
+                android:fontFamily="@font/aguafina_script"/>
+        </RadioGroup>
     </LinearLayout>
 </ScrollView>
