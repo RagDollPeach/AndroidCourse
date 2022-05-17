@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MyNotePad</string>
+    <string name="notes">Заметки</string>
+    <string name="favorite">Избранное</string>
+    <string name="inserts">Вложения</string>
+    <string name="reminders">Напоминание</string>
+    <string name="basket">Корзана</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
