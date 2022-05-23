@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:background="#B1B8A8">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,12 +22,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/t_v_notes"
+            android:id="@+id/t_v_create_note"
             style="@style/my_text_view_style"
             android:text="@string/notes" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/t_v_favorite"
+            android:id="@+id/t_v_note"
             style="@style/my_text_view_style"
             android:text="@string/favorite" />
 
