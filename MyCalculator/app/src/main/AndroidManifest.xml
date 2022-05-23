@@ -11,15 +11,16 @@
         android:theme="@style/my_theme_light">
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="fullSensor"
             android:exported="true"
-            android:windowSoftInputMode = "stateHidden">
+            android:screenOrientation="fullSensor"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
