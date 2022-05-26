@@ -16,11 +16,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 public class MainFragment extends Fragment {
 
-    private AppCompatTextView createNote;
     private AppCompatTextView notes;
+    private AppCompatTextView cities;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,25 +30,22 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        int tVNote = R.id.t_v_create_note;
+        int tVNote = R.id.t_v_note;
         int imagePencil = R.drawable.note_gr;
         setImages(view, tVNote, imagePencil);
 
-        int tVFavorite = R.id.t_v_note;
+        int tVFavorite = R.id.t_v_city;
         int imageStar = R.drawable.star;
         setImages(view, tVFavorite, imageStar);
 
-        int imageInsert = R.drawable.insert_gr;
-        int tVInsert = R.id.t_v_inserts;
+        int imageInsert = R.drawable.sitings;
+        int tVInsert = R.id.t_v_sitings;
         setImages(view, tVInsert, imageInsert);
 
-        int imageReminder = R.drawable.reminder;
-        int tVReminder = R.id.t_v_reminder;
+        int imageReminder = R.drawable.about;
+        int tVReminder = R.id.t_v_about;
         setImages(view, tVReminder, imageReminder);
 
-        int imageBasket = R.drawable.basket;
-        int tVBasket = R.id.t_v_basket;
-        setImages(view, tVBasket, imageBasket);
         return view;
     }
 
@@ -57,21 +53,22 @@ public class MainFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        CreateNoteFragment note = new CreateNoteFragment();
-        ReadNoteFragment rnf = new ReadNoteFragment();
+        NotesFragment rnf = new NotesFragment();
+        CitiesFragment cityFragment = new CitiesFragment();
 
-        createNote = view.findViewById(R.id.t_v_create_note);
         notes = view.findViewById(R.id.t_v_note);
+        cities = view.findViewById(R.id.t_v_city);
 
-        createNote.setOnClickListener(view1 -> enableFragment(createNote, note, "fragment_note"));
-        notes.setOnClickListener(view1 -> enableFragment(notes, rnf, "fragment_read_note"));
+        notes.setOnClickListener(view1 -> enableFragment(notes, rnf, "fragment_note"));
+        cities.setOnClickListener(view1 -> enableFragment(cities, cityFragment, "fragment_cities"));
+
     }
 
     public void setImages(View view, int textViewId, int imageId) {
         TextView textView = view.findViewById(textViewId);
-        if (getContext() != null){
+        if (getContext() != null) {
             Drawable img = ResourcesCompat.getDrawable(getResources(), imageId, getContext().getTheme());
-            if (img != null){
+            if (img != null) {
                 img.setBounds(30, 0, 120, 90);
             }
             textView.setCompoundDrawables(img, null, null, null);
