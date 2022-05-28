@@ -5,7 +5,7 @@
     <string name="about">О приложении</string>
     <string name="sitings">Настройки</string>
     <string name="basket">Удалить</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Это классное приложение , просто афигенное, оно такое афигенное , просто афигенней некуда, так что переводите бабки на дальнейшую разработку. Реквезиты : карта 546546648865 Сбер.</string>
     <string name="save">Записать</string>
     <string name="note_title">Название</string>
     <string name="back">Назад</string>
@@ -14,4 +14,6 @@
     <string name="title">Название</string>
     <string name="note">Заметка</string>
     <string name="hello">hello</string>
+    <string name="exit">Exit</string>
+    <string name="photos">Фото альбом</string>
 </resources>

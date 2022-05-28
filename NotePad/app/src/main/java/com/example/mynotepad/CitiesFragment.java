@@ -1,20 +1,18 @@
 package com.example.mynotepad;
 
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 
 public class CitiesFragment extends Fragment {
@@ -64,12 +62,7 @@ public class CitiesFragment extends Fragment {
     }
 
     private void showCoatOfArms(City city) {
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            showPortraitCoastOfArms(city);
-           // showLandCoastOfArms(city);
-        } else {
-            showPortraitCoastOfArms(city);
-        }
+        showPortraitCoastOfArms(city);
     }
 
 //    private void showLandCoastOfArms(City city) {

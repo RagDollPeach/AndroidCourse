@@ -1,12 +1,10 @@
 package com.example.mynotepad;
 
-import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -16,10 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.material.button.MaterialButton;
+
 public class MainFragment extends Fragment {
 
-    private AppCompatTextView notes;
-    private AppCompatTextView cities;
+    private MaterialButton notes;
+    private MaterialButton cities;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,20 +30,20 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        int tVNote = R.id.t_v_note;
+        int tVNote = R.id.material_button_note;
         int imagePencil = R.drawable.note_gr;
         setImages(view, tVNote, imagePencil);
 
-        int tVFavorite = R.id.t_v_city;
+        int tVFavorite = R.id.material_button_cities;
         int imageStar = R.drawable.star;
         setImages(view, tVFavorite, imageStar);
 
         int imageInsert = R.drawable.sitings;
-        int tVInsert = R.id.t_v_sitings;
+        int tVInsert = R.id.material_button_sitings;
         setImages(view, tVInsert, imageInsert);
 
-        int imageReminder = R.drawable.about;
-        int tVReminder = R.id.t_v_about;
+        int imageReminder = R.drawable.photos;
+        int tVReminder = R.id.material_button_photos;
         setImages(view, tVReminder, imageReminder);
 
         return view;
@@ -53,30 +53,27 @@ public class MainFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        NotesFragment rnf = new NotesFragment();
+        NotesFragment notesFragment = new NotesFragment();
         CitiesFragment cityFragment = new CitiesFragment();
 
-        notes = view.findViewById(R.id.t_v_note);
-        cities = view.findViewById(R.id.t_v_city);
+        notes = view.findViewById(R.id.material_button_note);
+        cities = view.findViewById(R.id.material_button_cities);
 
-        notes.setOnClickListener(view1 -> enableFragment(notes, rnf, "fragment_note"));
-        cities.setOnClickListener(view1 -> enableFragment(cities, cityFragment, "fragment_cities"));
+        notes.setOnClickListener(view1 -> enableFragment(notesFragment, "fragment_note"));
+        cities.setOnClickListener(view1 -> enableFragment(cityFragment, "fragment_cities"));
 
     }
 
     public void setImages(View view, int textViewId, int imageId) {
         TextView textView = view.findViewById(textViewId);
-        if (getContext() != null) {
-            Drawable img = ResourcesCompat.getDrawable(getResources(), imageId, getContext().getTheme());
-            if (img != null) {
-                img.setBounds(30, 0, 120, 90);
-            }
-            textView.setCompoundDrawables(img, null, null, null);
+        Drawable img = ResourcesCompat.getDrawable(getResources(), imageId, requireContext().getTheme());
+        if (img != null) {
+            img.setBounds(30, 0, 120, 90);
         }
+        textView.setCompoundDrawables(img, null, null, null);
     }
 
-    public void enableFragment(AppCompatTextView textView, Fragment note, String fragmentName) {
-        textView.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+    public void enableFragment(Fragment note, String fragmentName) {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, note)

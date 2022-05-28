@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.button.MaterialButton;
+
 public class CoatOfArmsFragment extends Fragment {
 
     static private String ARG_INDEX = "index";
@@ -36,6 +38,9 @@ public class CoatOfArmsFragment extends Fragment {
             textView.setText(city.getName());
             images.recycle();
         }
+
+        MaterialButton back = view.findViewById(R.id.material_button_back);
+        back.setOnClickListener(view1 -> requireActivity().getSupportFragmentManager().popBackStack());
     }
 
     public static CoatOfArmsFragment newInstance(City city) {

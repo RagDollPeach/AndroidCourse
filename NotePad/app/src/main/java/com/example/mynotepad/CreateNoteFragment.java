@@ -48,7 +48,7 @@ public class CreateNoteFragment extends Fragment {
                 textTitle = "без названия...";
             }
             if (textNote.equals("")) {
-                text.setHint("Напишите заметку");
+                Toast.makeText(getContext(), "Напишите заметку", Toast.LENGTH_SHORT).show();
             } else {
                 Note note = new Note(textTitle, textNote, createdTime);
                 notesList.add(note);
