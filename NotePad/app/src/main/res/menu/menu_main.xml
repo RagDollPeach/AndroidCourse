@@ -10,7 +10,12 @@
         android:id="@+id/exit"
         android:icon="@android:drawable/ic_menu_close_clear_cancel"
         android:title="@string/exit"
-        android:iconTint="@color/white"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_login"
+        android:icon="@drawable/login"
+        android:title="@string/login"
         app:showAsAction="ifRoom" />
 
 </menu>

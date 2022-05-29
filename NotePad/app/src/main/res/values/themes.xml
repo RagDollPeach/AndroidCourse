@@ -12,7 +12,17 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <item name="android:actionMenuTextColor">@color/white</item>
-        <item name="android:tint">@color/white</item>
+        <item name="actionOverflowButtonStyle">@style/actionOverflowButtonStyle</item>
+        <item name="drawerArrowStyle">@style/DrawerIconStyle</item>
         <!-- Customize your theme here. -->
     </style>
+    
+    <style name="actionOverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">@color/white</item>
+    </style>
+    
+    <style name="DrawerIconStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/white</item>
+    </style>
+
 </resources>

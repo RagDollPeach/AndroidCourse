@@ -1,10 +1,13 @@
 package com.example.mynotepad;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -53,8 +56,18 @@ public class CreateNoteFragment extends Fragment {
                 Note note = new Note(textTitle, textNote, createdTime);
                 notesList.add(note);
                 Toast.makeText(getContext(), "Заметка записана", Toast.LENGTH_SHORT).show();
+                hideKeyboard(requireActivity());
                 requireActivity().getSupportFragmentManager().popBackStack();
             }
         });
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager inputManager = (InputMethodManager) activity
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
+        View currentFocusedView = activity.getCurrentFocus();
+        if (currentFocusedView != null) {
+            inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
     }
 }

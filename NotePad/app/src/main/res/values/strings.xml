@@ -16,4 +16,10 @@
     <string name="hello">hello</string>
     <string name="exit">Exit</string>
     <string name="photos">Фото альбом</string>
+    <string name="navigation_drawer_open">drawer_open</string>
+    <string name="navigation_drawer_close">drawer_close</string>
+    <string name="user">Пользователь</string>
+    <string name="name">Имя</string>
+    <string name="lastname">Фамилия</string>
+    <string name="login">Авторизация</string>
 </resources>
