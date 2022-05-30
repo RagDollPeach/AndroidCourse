@@ -14,7 +14,7 @@
         android:text="@string/notes"
         android:textColor="@color/white"
         android:textSize="36sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -24,11 +24,11 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
+            android:layout_width="86dp"
+            android:layout_height="86dp"
             android:src="@drawable/cat"
             app:civ_border_color="@color/white"
-            app:civ_border_width="2dp" />
+            app:civ_border_width="2dp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -43,16 +43,14 @@
                 android:text="@string/user"
                 android:textColor="@color/white"
                 android:textSize="24sp"
-                android:textStyle="bold"
-
-                />
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/text_view_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:text="@string/name"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -68,9 +66,8 @@
                 android:text="@string/lastname"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                android:textStyle="bold"
+                android:textStyle="bold" />
 
-                />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

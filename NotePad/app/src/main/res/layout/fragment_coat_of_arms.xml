@@ -27,14 +27,13 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/material_button_back"
-        android:layout_width="wrap_content"
         style="@style/my_buttons_style"
+        android:layout_width="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="20dp"
         android:text="@string/back"
-        app:strokeWidth="2dp"
-        app:strokeColor="@color/green"
         app:cornerRadius="15dp"
-       />
+        app:strokeColor="@color/green"
+        app:strokeWidth="2dp" />
 
 </LinearLayout>

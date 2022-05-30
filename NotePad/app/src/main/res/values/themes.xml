@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.MyNotePad" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">#2B5DB1</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -16,11 +16,11 @@
         <item name="drawerArrowStyle">@style/DrawerIconStyle</item>
         <!-- Customize your theme here. -->
     </style>
-    
+
     <style name="actionOverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">
         <item name="android:tint">@color/white</item>
     </style>
-    
+
     <style name="DrawerIconStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="color">@color/white</item>
     </style>

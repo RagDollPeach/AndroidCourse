@@ -29,7 +29,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new MyViewHolder(LayoutInflater.from(context)
                 .inflate(R.layout.note_view, parent, false));
-
     }
 
     @Override
@@ -43,6 +42,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         holder.itemView.setOnLongClickListener(view -> {
             PopupMenu menu = new PopupMenu(context, view);
+            menu.getMenu().add("Поделится");
             menu.getMenu().add("Удалить");
             menu.setOnMenuItemClickListener(menuItem -> {
                 if (menuItem.getTitle().equals("Удалить")) {

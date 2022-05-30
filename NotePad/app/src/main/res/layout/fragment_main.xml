@@ -26,32 +26,32 @@
             style="@style/my_buttons_style"
             android:text="@string/notes"
             app:cornerRadius="15dp"
-            app:strokeWidth="2dp"
-            app:strokeColor="@color/green"/>
+            app:strokeColor="@color/green"
+            app:strokeWidth="2dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/material_button_cities"
             style="@style/my_buttons_style"
             android:text="@string/city_list"
             app:cornerRadius="15dp"
-            app:strokeWidth="2dp"
-            app:strokeColor="@color/green"/>
+            app:strokeColor="@color/green"
+            app:strokeWidth="2dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/material_button_sitings"
             style="@style/my_buttons_style"
             android:text="@string/sitings"
             app:cornerRadius="15dp"
-            app:strokeWidth="2dp"
-            app:strokeColor="@color/green"/>
+            app:strokeColor="@color/green"
+            app:strokeWidth="2dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/material_button_photos"
             style="@style/my_buttons_style"
             android:text="@string/photos"
             app:cornerRadius="15dp"
-            app:strokeWidth="2dp"
-            app:strokeColor="@color/green"/>
+            app:strokeColor="@color/green"
+            app:strokeWidth="2dp" />
 
     </LinearLayout>
 </ScrollView>

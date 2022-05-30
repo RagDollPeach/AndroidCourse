@@ -22,4 +22,7 @@
     <string name="name">Имя</string>
     <string name="lastname">Фамилия</string>
     <string name="login">Авторизация</string>
+    <string name="main">Главная</string>
+    <string name="find">Поиск</string>
+    <string name="no_notes">Нет записей</string>
 </resources>

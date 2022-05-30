@@ -2,6 +2,9 @@ package com.example.mynotepad;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
@@ -14,6 +17,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Collections;
 import java.util.List;
 
 public class NotesFragment extends Fragment {
@@ -52,4 +56,5 @@ public class NotesFragment extends Fragment {
                 .addToBackStack(fragmentName)
                 .commit();
     }
+
 }

@@ -9,13 +9,13 @@
 
     <EditText
         android:id="@+id/edit_name"
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:background="@drawable/round_read_text_view"
         android:hint="@string/name"
-        android:padding="10dp" />
+        android:padding="10dp"/>
 
     <EditText
         android:id="@+id/edit_last_name"
@@ -25,32 +25,26 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/round_read_text_view"
         android:hint="@string/lastname"
-        android:padding="10dp" />
+        android:padding="10dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/login_button"
+        style="@style/my_buttons_style"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="@color/text_view_background_color"
         android:text="@string/login"
-        android:textAllCaps="false"
         app:cornerRadius="10dp"
         app:strokeColor="@color/green"
-        app:strokeWidth="2dp" />
+        app:strokeWidth="2dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/back_button"
+        style="@style/my_buttons_style"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/text_view_background_color"
         android:text="@string/back"
-        android:textAllCaps="false"
         app:cornerRadius="10dp"
         app:strokeColor="@color/green"
-        app:strokeWidth="2dp" />
+        app:strokeWidth="2dp"/>
 
 </LinearLayout>
