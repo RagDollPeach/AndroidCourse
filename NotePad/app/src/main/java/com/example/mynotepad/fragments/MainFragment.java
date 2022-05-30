@@ -1,4 +1,4 @@
-package com.example.mynotepad;
+package com.example.mynotepad.fragments;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.mynotepad.R;
 import com.google.android.material.button.MaterialButton;
 
 public class MainFragment extends Fragment {

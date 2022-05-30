@@ -1,4 +1,4 @@
-package com.example.mynotepad;
+package com.example.mynotepad.fragments;
 
 import android.os.Bundle;
 
@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.mynotepad.R;
 
 public class SearchFragment extends Fragment {
 

@@ -1,7 +1,6 @@
-package com.example.mynotepad;
+package com.example.mynotepad.pojo;
 
 import java.io.Serializable;
-import java.util.Comparator;
 
 public class Note implements Serializable, Comparable<Note> {
 

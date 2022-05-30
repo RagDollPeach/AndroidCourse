@@ -1,8 +1,7 @@
-package com.example.mynotepad;
+package com.example.mynotepad.fragments;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,6 +17,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
+
+import com.example.mynotepad.R;
+import com.example.mynotepad.pojo.Note;
 
 import java.util.ArrayList;
 import java.util.Collections;

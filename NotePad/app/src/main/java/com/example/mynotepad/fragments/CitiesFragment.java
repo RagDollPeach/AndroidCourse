@@ -1,4 +1,4 @@
-package com.example.mynotepad;
+package com.example.mynotepad.fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,6 +16,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.example.mynotepad.R;
+import com.example.mynotepad.pojo.City;
 
 
 public class CitiesFragment extends Fragment {

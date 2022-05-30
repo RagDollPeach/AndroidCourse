@@ -1,4 +1,4 @@
-package com.example.mynotepad;
+package com.example.mynotepad.adpter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.mynotepad.fragments.CreateNoteFragment;
+import com.example.mynotepad.R;
+import com.example.mynotepad.pojo.Note;
 
 import java.text.DateFormat;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.mynotepad;
+package com.example.mynotepad.fragments;
 
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mynotepad.R;
+import com.example.mynotepad.pojo.City;
 import com.google.android.material.button.MaterialButton;
 
 public class CoatOfArmsFragment extends Fragment {

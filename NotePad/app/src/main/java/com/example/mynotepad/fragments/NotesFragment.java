@@ -1,13 +1,9 @@
-package com.example.mynotepad;
+package com.example.mynotepad.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,7 +13,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Collections;
+import com.example.mynotepad.R;
+import com.example.mynotepad.adpter.MyAdapter;
+import com.example.mynotepad.fragments.CreateNoteFragment;
+import com.example.mynotepad.pojo.Note;
+
 import java.util.List;
 
 public class NotesFragment extends Fragment {
