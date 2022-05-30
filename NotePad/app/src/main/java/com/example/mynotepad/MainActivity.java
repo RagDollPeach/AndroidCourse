@@ -26,6 +26,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public static List<User> usersList = new ArrayList<>();
+    MainFragment mainFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         initActionBar();
 
-        MainFragment mainFragment = new MainFragment();
+        mainFragment = new MainFragment();
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container, mainFragment)
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             int id = item.getItemId();
             switch (id) {
                 case R.id.drawer_main:
-                    showAboutFragment(new MainFragment());
+                    showAboutFragment(mainFragment);
                     drawer.close();
                     return true;
                 case R.id.drawer_notes:

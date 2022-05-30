@@ -26,6 +26,9 @@
             style="@style/my_buttons_style"
             android:text="@string/notes"
             app:cornerRadius="15dp"
+            app:icon="@android:drawable/ic_menu_edit"
+            app:iconSize="20dp"
+            app:iconTint="@color/black"
             app:strokeColor="@color/green"
             app:strokeWidth="2dp" />
 
@@ -34,6 +37,9 @@
             style="@style/my_buttons_style"
             android:text="@string/city_list"
             app:cornerRadius="15dp"
+            app:icon="@android:drawable/ic_menu_myplaces"
+            app:iconSize="25dp"
+            app:iconTint="@color/black"
             app:strokeColor="@color/green"
             app:strokeWidth="2dp" />
 
@@ -42,6 +48,9 @@
             style="@style/my_buttons_style"
             android:text="@string/sitings"
             app:cornerRadius="15dp"
+            app:icon="@android:drawable/ic_menu_preferences"
+            app:iconSize="25dp"
+            app:iconTint="@color/black"
             app:strokeColor="@color/green"
             app:strokeWidth="2dp" />
 
@@ -50,6 +59,9 @@
             style="@style/my_buttons_style"
             android:text="@string/photos"
             app:cornerRadius="15dp"
+            app:icon="@android:drawable/ic_menu_gallery"
+            app:iconSize="25dp"
+            app:iconTint="@color/black"
             app:strokeColor="@color/green"
             app:strokeWidth="2dp" />
 
