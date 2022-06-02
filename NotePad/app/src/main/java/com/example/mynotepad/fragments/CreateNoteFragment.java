@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.mynotepad.R;
 import com.example.mynotepad.pojo.Note;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -71,7 +72,9 @@ public class CreateNoteFragment extends Fragment {
                 Note note = new Note(textTitle, textNote, createdTime);
                 notesList.add(note);
                 Collections.sort(notesList);
-                Toast.makeText(getContext(), "Заметка записана", Toast.LENGTH_SHORT).show();
+                Snackbar.make(view, "Заметка записана", Snackbar.LENGTH_SHORT)
+                        .setAction("push me", view2 -> Toast.makeText(view2.getContext()
+                                , "fuck off", Toast.LENGTH_SHORT).show()).show();
                 hideKeyboard(requireActivity());
                 requireActivity().getSupportFragmentManager().popBackStack();
             }
