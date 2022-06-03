@@ -14,13 +14,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mynotepad.R;
-import com.example.mynotepad.adpter.MyAdapter;
-import com.example.mynotepad.fragments.CreateNoteFragment;
+import com.example.mynotepad.RvOnClickListener;
+import com.example.mynotepad.adpter.NoteAdapter;
 import com.example.mynotepad.pojo.Note;
 
-import java.util.List;
+public class NotesFragment extends Fragment implements RvOnClickListener{
 
-public class NotesFragment extends Fragment {
+    private RvOnClickListener rvOnClickListener;
+    private CreateNoteFragment fragment;
+
+    public void setRvOnClickListener(RvOnClickListener rvOnClickListener) {
+        this.rvOnClickListener = rvOnClickListener;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,15 +42,15 @@ public class NotesFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         AppCompatButton newNoteButton = view.findViewById(R.id.new_note_button);
-        CreateNoteFragment fragment = new CreateNoteFragment();
+        fragment = new CreateNoteFragment();
         RecyclerView recyclerView = view.findViewById(R.id.recycler);
+        setRvOnClickListener(NotesFragment.this);
 
         newNoteButton.setOnClickListener(view1 -> enableFragment(fragment, "fragment_create_note"));
-        List<Note> notes = CreateNoteFragment.notesList;
 
-        MyAdapter myAdapter = new MyAdapter(getContext(), notes);
+        NoteAdapter notesAdapter = new NoteAdapter(rvOnClickListener);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(myAdapter);
+        recyclerView.setAdapter(notesAdapter);
 
     }
 
@@ -57,4 +62,8 @@ public class NotesFragment extends Fragment {
                 .commit();
     }
 
+    @Override
+    public void switchFragment(Note note) {
+        enableFragment(fragment,"fragment_create_note");
+    }
 }

@@ -15,11 +15,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import com.example.mynotepad.R;
+import com.example.mynotepad.RvOnClickListener;
+import com.example.mynotepad.adpter.NoteAdapter;
 import com.example.mynotepad.pojo.Note;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -31,7 +33,11 @@ public class CreateNoteFragment extends Fragment {
     public static List<Note> notesList = new ArrayList<>();
     private EditText title;
     private EditText text;
+    private RvOnClickListener rvOnClickListener;
 
+    public void setRvOnClickListener(RvOnClickListener rvOnClickListener) {
+        this.rvOnClickListener = rvOnClickListener;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,7 +64,8 @@ public class CreateNoteFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         title = view.findViewById(R.id.title_input);
         text = view.findViewById(R.id.note_input);
-        AppCompatButton saveButton = view.findViewById(R.id.save_button);
+        MaterialButton saveButton = view.findViewById(R.id.save_button);
+
         saveButton.setOnClickListener(view1 -> {
             String textTitle = title.getText().toString();
             String textNote = text.getText().toString();
@@ -89,4 +96,5 @@ public class CreateNoteFragment extends Fragment {
             inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
     }
+
 }

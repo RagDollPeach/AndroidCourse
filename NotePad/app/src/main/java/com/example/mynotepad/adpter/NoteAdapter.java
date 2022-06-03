@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,53 +14,49 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mynotepad.R;
+import com.example.mynotepad.RvOnClickListener;
 import com.example.mynotepad.fragments.CreateNoteFragment;
-import com.example.mynotepad.fragments.NotesFragment;
 import com.example.mynotepad.pojo.Note;
 
 import java.text.DateFormat;
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder> {
 
-    private Context context;
-    private List<Note> notesList;
+    private List<Note> notesList = CreateNoteFragment.notesList;
+    private RvOnClickListener rvOnClickListener;
 
-    public MyAdapter(Context context, List<Note> notesList) {
-        this.context = context;
-        this.notesList = notesList;
+    public void setRvOnClickListener(RvOnClickListener rvOnClickListener) {
+        this.rvOnClickListener = rvOnClickListener;
+    }
+
+    public NoteAdapter(RvOnClickListener rvOnClickListener) {
+        this.rvOnClickListener = rvOnClickListener;
     }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(context)
+    public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new NoteViewHolder(LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.note_view, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
         Note note = notesList.get(position);
-        holder.titleOutput.setText(note.getName());
+        holder.titleOutput.setText(note.getTitle());
         holder.noteOutput.setText(note.getNote());
 
         String formatedTime = DateFormat.getDateTimeInstance().format(note.getDate());
         holder.timeOutput.setText(formatedTime);
 
-        holder.itemView.setOnClickListener(view -> {
-            NotesFragment fragment = new NotesFragment();
-            CreateNoteFragment createNoteFragment = new CreateNoteFragment();
-            fragment.enableFragment(createNoteFragment,"fragment_notes");
-        });
-
-
         holder.itemView.setOnLongClickListener(view -> {
-            PopupMenu menu = new PopupMenu(context, view);
+            PopupMenu menu = new PopupMenu(view.getContext(), view);
             menu.getMenu().add("Поделится");
             menu.getMenu().add("Удалить");
             menu.setOnMenuItemClickListener(menuItem -> {
                 if (menuItem.getTitle().equals("Удалить")) {
-                    alertDialogForDeleteNote(position);
+                    alertDialogForDeleteNote(view.getContext(), position);
                 }
                 return true;
             });
@@ -68,7 +65,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         });
     }
 
-    private void alertDialogForDeleteNote(int position) {
+    private void alertDialogForDeleteNote(Context context, int position) {
         new AlertDialog.Builder(context)
                 .setTitle("Удаление заметки")
                 .setMessage("Вы действительно хотите удалить эту заметку?")
@@ -88,13 +85,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return notesList.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public class NoteViewHolder extends RecyclerView.ViewHolder {
         TextView titleOutput;
         TextView noteOutput;
         TextView timeOutput;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public NoteViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            itemView.setOnClickListener(view -> {
+                rvOnClickListener.switchFragment(notesList.get(getAdapterPosition()));
+            });
+
             titleOutput = itemView.findViewById(R.id.note_title_output);
             noteOutput = itemView.findViewById(R.id.note_output);
             timeOutput = itemView.findViewById(R.id.note_time_output);

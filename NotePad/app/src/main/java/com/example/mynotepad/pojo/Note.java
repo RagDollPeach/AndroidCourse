@@ -14,12 +14,12 @@ public class Note implements Serializable, Comparable<Note> {
         this.date = date;
     }
 
-    public String getName() {
+    public String getTitle() {
         return title;
     }
 
-    public void setName(String name) {
-        this.title = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getNote() {
@@ -40,6 +40,6 @@ public class Note implements Serializable, Comparable<Note> {
 
     @Override
     public int compareTo(Note note) {
-        return this.getName().compareTo(note.getName());
+        return this.getTitle().compareTo(note.getTitle());
     }
 }
