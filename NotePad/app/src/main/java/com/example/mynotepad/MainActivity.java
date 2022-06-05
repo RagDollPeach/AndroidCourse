@@ -25,7 +25,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static List<User> usersList = new ArrayList<>();
     MainFragment mainFragment;
 
     @Override

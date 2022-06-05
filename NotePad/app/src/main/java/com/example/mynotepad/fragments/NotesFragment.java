@@ -18,7 +18,7 @@ import com.example.mynotepad.RvOnClickListener;
 import com.example.mynotepad.adpter.NoteAdapter;
 import com.example.mynotepad.pojo.Note;
 
-public class NotesFragment extends Fragment implements RvOnClickListener{
+public class NotesFragment extends Fragment implements RvOnClickListener {
 
     private CreateNoteFragment fragment;
 
@@ -47,7 +47,6 @@ public class NotesFragment extends Fragment implements RvOnClickListener{
         adapter.setRvOnClickListener(NotesFragment.this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
-
     }
 
     public void enableFragment(Fragment fragment, String fragmentName) {
@@ -61,9 +60,10 @@ public class NotesFragment extends Fragment implements RvOnClickListener{
 
     @Override
     public void switchFragment(Note note) {
+        CreateNoteFragment fragment = new CreateNoteFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable("note",note);
-        this.setArguments(bundle);
-        enableFragment(fragment,"fragment_create_note");
+        bundle.putParcelable("note", note);
+        fragment.setArguments(bundle);
+        enableFragment(fragment, "fragment_create_note");
     }
 }
