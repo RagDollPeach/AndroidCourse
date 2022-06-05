@@ -20,12 +20,7 @@ import com.example.mynotepad.pojo.Note;
 
 public class NotesFragment extends Fragment implements RvOnClickListener{
 
-    private RvOnClickListener rvOnClickListener;
     private CreateNoteFragment fragment;
-
-    public void setRvOnClickListener(RvOnClickListener rvOnClickListener) {
-        this.rvOnClickListener = rvOnClickListener;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,26 +39,31 @@ public class NotesFragment extends Fragment implements RvOnClickListener{
         AppCompatButton newNoteButton = view.findViewById(R.id.new_note_button);
         fragment = new CreateNoteFragment();
         RecyclerView recyclerView = view.findViewById(R.id.recycler);
-        setRvOnClickListener(NotesFragment.this);
 
         newNoteButton.setOnClickListener(view1 -> enableFragment(fragment, "fragment_create_note"));
 
-        NoteAdapter notesAdapter = new NoteAdapter(rvOnClickListener);
+        NoteAdapter adapter = new NoteAdapter();
+        adapter.setNotesList(CreateNoteFragment.notesList);
+        adapter.setRvOnClickListener(NotesFragment.this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(notesAdapter);
+        recyclerView.setAdapter(adapter);
 
     }
 
-    public void enableFragment(Fragment note, String fragmentName) {
+    public void enableFragment(Fragment fragment, String fragmentName) {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, note)
+                .replace(R.id.fragment_container, fragment)
                 .addToBackStack(fragmentName)
                 .commit();
     }
 
+
     @Override
     public void switchFragment(Note note) {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("note",note);
+        this.setArguments(bundle);
         enableFragment(fragment,"fragment_create_note");
     }
 }

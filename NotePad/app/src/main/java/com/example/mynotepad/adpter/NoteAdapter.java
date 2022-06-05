@@ -5,7 +5,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,14 +22,14 @@ import java.util.List;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder> {
 
-    private List<Note> notesList = CreateNoteFragment.notesList;
+    private List<Note> notesList;
     private RvOnClickListener rvOnClickListener;
 
-    public void setRvOnClickListener(RvOnClickListener rvOnClickListener) {
-        this.rvOnClickListener = rvOnClickListener;
+    public void setNotesList(List<Note> notesList) {
+        this.notesList = notesList;
     }
 
-    public NoteAdapter(RvOnClickListener rvOnClickListener) {
+    public void setRvOnClickListener(RvOnClickListener rvOnClickListener) {
         this.rvOnClickListener = rvOnClickListener;
     }
 
@@ -73,7 +72,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
                 .setCancelable(false)
                 .setPositiveButton("Да", (dialogInterface, i) -> {
                     Toast.makeText(context, "Заметка удалена", Toast.LENGTH_SHORT).show();
-                    CreateNoteFragment.notesList.remove(position);
+                    notesList.remove(position);
                 })
                 .setNegativeButton("Нет", (dialogInterface, i)
                         -> Toast.makeText(context, "Заметка не удалена", Toast.LENGTH_SHORT).show())

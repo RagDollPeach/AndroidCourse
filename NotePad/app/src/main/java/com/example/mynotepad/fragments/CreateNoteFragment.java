@@ -3,6 +3,7 @@ package com.example.mynotepad.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,14 +31,9 @@ import java.util.List;
 
 public class CreateNoteFragment extends Fragment {
 
-    public static List<Note> notesList = new ArrayList<>();
+    public static ArrayList<Note> notesList = new ArrayList<>();
     private EditText title;
     private EditText text;
-    private RvOnClickListener rvOnClickListener;
-
-    public void setRvOnClickListener(RvOnClickListener rvOnClickListener) {
-        this.rvOnClickListener = rvOnClickListener;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,9 +62,17 @@ public class CreateNoteFragment extends Fragment {
         text = view.findViewById(R.id.note_input);
         MaterialButton saveButton = view.findViewById(R.id.save_button);
 
+        NotesFragment fragment = new NotesFragment();
+        Bundle bundle = fragment.getArguments();
+        if (bundle != null) {
+            Note note = bundle.getParcelable("note");
+            text.setText(note.getNote());
+        }
+
         saveButton.setOnClickListener(view1 -> {
             String textTitle = title.getText().toString();
             String textNote = text.getText().toString();
+
             long createdTime = System.currentTimeMillis();
             if (textTitle.equals("")) {
                 textTitle = "без названия...";
@@ -79,9 +83,10 @@ public class CreateNoteFragment extends Fragment {
                 Note note = new Note(textTitle, textNote, createdTime);
                 notesList.add(note);
                 Collections.sort(notesList);
+
                 Snackbar.make(view, "Заметка записана", Snackbar.LENGTH_SHORT)
                         .setAction("push me", view2 -> Toast.makeText(view2.getContext()
-                                , "fuck off", Toast.LENGTH_SHORT).show()).show();
+                                , "Thank you", Toast.LENGTH_SHORT).show()).show();
                 hideKeyboard(requireActivity());
                 requireActivity().getSupportFragmentManager().popBackStack();
             }
@@ -96,5 +101,4 @@ public class CreateNoteFragment extends Fragment {
             inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
     }
-
 }
