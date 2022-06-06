@@ -13,8 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mynotepad.R;
-import com.example.mynotepad.RvOnClickListener;
-import com.example.mynotepad.fragments.CreateNoteFragment;
+import com.example.mynotepad.intefaces.RvOnClickListener;
 import com.example.mynotepad.pojo.Note;
 
 import java.text.DateFormat;
@@ -101,5 +100,4 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
             timeOutput = itemView.findViewById(R.id.note_time_output);
         }
     }
-
 }

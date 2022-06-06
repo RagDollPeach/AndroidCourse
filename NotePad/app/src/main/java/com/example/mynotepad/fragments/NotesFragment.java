@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mynotepad.R;
-import com.example.mynotepad.RvOnClickListener;
+import com.example.mynotepad.intefaces.RvOnClickListener;
 import com.example.mynotepad.adpter.NoteAdapter;
 import com.example.mynotepad.pojo.Note;
 
