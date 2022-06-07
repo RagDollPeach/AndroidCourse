@@ -18,18 +18,20 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.mynotepad.R;
+import com.example.mynotepad.data.DataSource;
+import com.example.mynotepad.intefaces.IDataSource;
 import com.example.mynotepad.pojo.Note;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.ArrayList;
 import java.util.Collections;
 
 public class CreateNoteFragment extends Fragment {
 
-    public static ArrayList<Note> notesList = new ArrayList<>();
     private EditText title;
     private EditText text;
+    private IDataSource dataSource = DataSource.getInstance();
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,9 +78,9 @@ public class CreateNoteFragment extends Fragment {
                     Toast.makeText(getContext(), "Напишите заметку", Toast.LENGTH_SHORT).show();
                 } else {
                     Note note = new Note(textTitle, textNote, createdTime);
-                    notesList.remove(bundleNote);
-                    notesList.add(note);
-                    Collections.sort(notesList);
+                    dataSource.removeNote(bundleNote);
+                    dataSource.addNote(note);
+                    Collections.sort(dataSource.getNotesList());
 
                     Snackbar.make(view, "Заметка записана", Snackbar.LENGTH_SHORT)
                             .setAction("push me", view2 -> Toast.makeText(view2.getContext()
@@ -100,12 +102,13 @@ public class CreateNoteFragment extends Fragment {
                     Toast.makeText(getContext(), "Напишите заметку", Toast.LENGTH_SHORT).show();
                 } else {
                     Note note = new Note(textTitle, textNote, createdTime);
-                    notesList.add(note);
-                    Collections.sort(notesList);
+                    dataSource.addNote(note);
+                    Collections.sort(dataSource.getNotesList());
 
                     Snackbar.make(view, "Заметка записана", Snackbar.LENGTH_SHORT)
                             .setAction("push me", view2 -> Toast.makeText(view2.getContext()
                                     , "Thank you", Toast.LENGTH_SHORT).show()).show();
+
                     hideKeyboard(requireActivity());
                     requireActivity().getSupportFragmentManager().popBackStack();
                 }
@@ -118,7 +121,8 @@ public class CreateNoteFragment extends Fragment {
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
         View currentFocusedView = activity.getCurrentFocus();
         if (currentFocusedView != null) {
-            inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(),
+                    InputMethodManager.HIDE_NOT_ALWAYS);
         }
     }
 }

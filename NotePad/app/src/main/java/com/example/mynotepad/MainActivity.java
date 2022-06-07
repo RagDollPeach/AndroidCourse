@@ -17,6 +17,7 @@ import com.example.mynotepad.fragments.LoginFragment;
 import com.example.mynotepad.fragments.MainFragment;
 import com.example.mynotepad.fragments.NotesFragment;
 import com.example.mynotepad.fragments.SearchFragment;
+import com.example.mynotepad.intefaces.IDataSource;
 import com.example.mynotepad.pojo.User;
 import com.google.android.material.navigation.NavigationView;
 
@@ -25,7 +26,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    MainFragment mainFragment;
+    private MainFragment mainFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

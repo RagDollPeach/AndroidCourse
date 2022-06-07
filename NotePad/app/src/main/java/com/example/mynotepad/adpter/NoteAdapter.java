@@ -1,5 +1,6 @@
 package com.example.mynotepad.adpter;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -50,11 +51,14 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
 
         holder.itemView.setOnLongClickListener(view -> {
             PopupMenu menu = new PopupMenu(view.getContext(), view);
-            menu.getMenu().add("Поделится");
             menu.getMenu().add("Удалить");
+            menu.getMenu().add("Удалить все заметки");
             menu.setOnMenuItemClickListener(menuItem -> {
                 if (menuItem.getTitle().equals("Удалить")) {
                     alertDialogForDeleteNote(view.getContext(), position);
+                }
+                if (menuItem.getTitle().equals("Удалить все заметки")) {
+                    alertDialogForDeleteAllNote(view.getContext());
                 }
                 return true;
             });
@@ -72,9 +76,26 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
                 .setPositiveButton("Да", (dialogInterface, i) -> {
                     Toast.makeText(context, "Заметка удалена", Toast.LENGTH_SHORT).show();
                     notesList.remove(position);
+                    notifyItemRemoved(position);
                 })
                 .setNegativeButton("Нет", (dialogInterface, i)
                         -> Toast.makeText(context, "Заметка не удалена", Toast.LENGTH_SHORT).show())
+                .show();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private void alertDialogForDeleteAllNote(Context context) {
+        new AlertDialog.Builder(context)
+                .setTitle("Удаление всех заметок")
+                .setMessage("Вы действительно хотите удалить все заметки?")
+                .setCancelable(false)
+                .setPositiveButton("Да", (dialogInterface, i) -> {
+                    Toast.makeText(context, "Заметки удалены", Toast.LENGTH_SHORT).show();
+                    notesList.clear();
+                    notifyDataSetChanged();
+                })
+                .setNegativeButton("Нет", (dialogInterface, i)
+                        -> Toast.makeText(context, "Заметки не удалены", Toast.LENGTH_SHORT).show())
                 .show();
     }
 
@@ -91,9 +112,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         public NoteViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            itemView.setOnClickListener(view -> {
-                rvOnClickListener.switchFragment(notesList.get(getAdapterPosition()));
-            });
+            itemView.setOnClickListener(view ->
+                    rvOnClickListener.switchFragment(notesList.get(getAdapterPosition())));
 
             titleOutput = itemView.findViewById(R.id.note_title_output);
             noteOutput = itemView.findViewById(R.id.note_output);

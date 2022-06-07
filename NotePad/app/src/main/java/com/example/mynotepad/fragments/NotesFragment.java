@@ -14,13 +14,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mynotepad.R;
-import com.example.mynotepad.intefaces.RvOnClickListener;
 import com.example.mynotepad.adpter.NoteAdapter;
+import com.example.mynotepad.data.DataSource;
+import com.example.mynotepad.intefaces.IDataSource;
+import com.example.mynotepad.intefaces.RvOnClickListener;
 import com.example.mynotepad.pojo.Note;
 
 public class NotesFragment extends Fragment implements RvOnClickListener {
 
     private CreateNoteFragment fragment;
+    private IDataSource dataSource = DataSource.getInstance();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,10 +46,11 @@ public class NotesFragment extends Fragment implements RvOnClickListener {
         newNoteButton.setOnClickListener(view1 -> enableFragment(fragment, "fragment_create_note"));
 
         NoteAdapter adapter = new NoteAdapter();
-        adapter.setNotesList(CreateNoteFragment.notesList);
+        adapter.setNotesList(dataSource.getNotesList());
         adapter.setRvOnClickListener(NotesFragment.this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+        recyclerView.scrollToPosition(dataSource.getNotesList().size() - 1);
     }
 
     public void enableFragment(Fragment fragment, String fragmentName) {
@@ -56,7 +60,6 @@ public class NotesFragment extends Fragment implements RvOnClickListener {
                 .addToBackStack(fragmentName)
                 .commit();
     }
-
 
     @Override
     public void switchFragment(Note note) {
