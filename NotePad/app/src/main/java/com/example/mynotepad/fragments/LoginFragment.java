@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.mynotepad.R;
+import com.example.mynotepad.intefaces.IDrawerHeaderHandler;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -53,10 +54,20 @@ public class LoginFragment extends Fragment {
         backButton.setOnClickListener(view1 -> requireActivity().getSupportFragmentManager().popBackStack());
 
         loginButton.setOnClickListener(view1 -> {
-            Toast.makeText(getContext(), "You are logged in", Toast.LENGTH_SHORT).show();
+            IDrawerHeaderHandler activity = (IDrawerHeaderHandler) getActivity();
+            if (name != null && activity != null) {
+                activity.setName(name.getText().toString());
+                activity.setLastName(lastName.getText().toString());
+            }
             hideKeyboard(requireActivity());
             requireActivity().getSupportFragmentManager().popBackStack();
         });
+    }
+
+    @Override
+    public void onDestroyView() {
+        hideKeyboard(requireActivity());
+        super.onDestroyView();
     }
 
     @Override

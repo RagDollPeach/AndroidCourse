@@ -1,6 +1,7 @@
 package com.example.mynotepad.fragments;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -24,13 +26,15 @@ import com.example.mynotepad.pojo.Note;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.Calendar;
 import java.util.Collections;
 
-public class CreateNoteFragment extends Fragment {
+public class CreateNoteFragment extends Fragment implements DatePickerDialog.OnDateSetListener{
 
     private EditText title;
     private EditText text;
     private IDataSource dataSource = DataSource.getInstance();
+    private MaterialButton dateButton;
 
 
     @Override
@@ -58,6 +62,7 @@ public class CreateNoteFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         title = view.findViewById(R.id.title_input);
         text = view.findViewById(R.id.note_input);
+        dateButton = view.findViewById(R.id.date_button);
         MaterialButton saveButton = view.findViewById(R.id.save_button);
 
         Bundle bundle = getArguments();
@@ -114,6 +119,14 @@ public class CreateNoteFragment extends Fragment {
                 }
             });
         }
+
+        dateButton.setOnClickListener(v -> datePickerDialog());
+    }
+
+    @Override
+    public void onDestroyView() {
+        hideKeyboard(requireActivity());
+        super.onDestroyView();
     }
 
     public static void hideKeyboard(Activity activity) {
@@ -124,5 +137,21 @@ public class CreateNoteFragment extends Fragment {
             inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(),
                     InputMethodManager.HIDE_NOT_ALWAYS);
         }
+    }
+
+    private void datePickerDialog() {
+        new DatePickerDialog(
+                requireContext(),
+                this,
+                Calendar.getInstance().get(Calendar.YEAR),
+                Calendar.getInstance().get(Calendar.MONTH),
+                Calendar.getInstance().get(Calendar.DAY_OF_MONTH)).show();
+    }
+
+    @Override
+    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+        String date = text.getText().toString() + day + "/" + month + "/" + year;
+        text.setText(date);
+        text.setSelection(text.getText().length());
     }
 }

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -18,13 +19,14 @@ import com.example.mynotepad.fragments.MainFragment;
 import com.example.mynotepad.fragments.NotesFragment;
 import com.example.mynotepad.fragments.SearchFragment;
 import com.example.mynotepad.intefaces.IDataSource;
+import com.example.mynotepad.intefaces.IDrawerHeaderHandler;
 import com.example.mynotepad.pojo.User;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements IDrawerHeaderHandler {
 
     private MainFragment mainFragment;
 
@@ -127,5 +129,17 @@ public class MainActivity extends AppCompatActivity {
                     .addToBackStack(null)
                     .commit();
         }
+    }
+
+    @Override
+    public void setName(String name) {
+        TextView userName = findViewById(R.id.text_view_name);
+        userName.setText(name);
+    }
+
+    @Override
+    public void setLastName(String lastName) {
+        TextView userLastName = findViewById(R.id.text_view_lastname);
+        userLastName.setText(lastName);
     }
 }
