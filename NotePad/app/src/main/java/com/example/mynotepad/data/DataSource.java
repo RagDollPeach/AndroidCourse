@@ -1,6 +1,6 @@
 package com.example.mynotepad.data;
 
-import com.example.mynotepad.intefaces.IDataSource;
+import com.example.mynotepad.interfaces.IDataSource;
 import com.example.mynotepad.pojo.Note;
 
 import java.util.ArrayList;

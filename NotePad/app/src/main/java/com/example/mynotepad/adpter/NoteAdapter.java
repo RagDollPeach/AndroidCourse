@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mynotepad.R;
-import com.example.mynotepad.intefaces.RvOnClickListener;
+import com.example.mynotepad.interfaces.RvOnClickListener;
 import com.example.mynotepad.pojo.Note;
 
 import java.text.DateFormat;

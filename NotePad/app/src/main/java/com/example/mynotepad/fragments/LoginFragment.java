@@ -18,14 +18,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.mynotepad.R;
-import com.example.mynotepad.intefaces.IDrawerHeaderHandler;
+import com.example.mynotepad.interfaces.IDrawerHeaderHandler;
 import com.google.android.material.button.MaterialButton;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class LoginFragment extends Fragment {
 

@@ -1,4 +1,4 @@
-package com.example.mynotepad.intefaces;
+package com.example.mynotepad.interfaces;
 
 public interface IDrawerHeaderHandler {
 

@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mynotepad.R;
 import com.example.mynotepad.adpter.NoteAdapter;
 import com.example.mynotepad.data.DataSource;
-import com.example.mynotepad.intefaces.IDataSource;
-import com.example.mynotepad.intefaces.RvOnClickListener;
+import com.example.mynotepad.interfaces.IDataSource;
+import com.example.mynotepad.interfaces.RvOnClickListener;
 import com.example.mynotepad.pojo.Note;
 
 public class NotesFragment extends Fragment implements RvOnClickListener {

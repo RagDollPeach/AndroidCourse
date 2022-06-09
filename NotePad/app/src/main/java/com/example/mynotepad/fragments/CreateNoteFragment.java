@@ -21,7 +21,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.mynotepad.R;
 import com.example.mynotepad.data.DataSource;
-import com.example.mynotepad.intefaces.IDataSource;
+import com.example.mynotepad.interfaces.IDataSource;
 import com.example.mynotepad.pojo.Note;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;

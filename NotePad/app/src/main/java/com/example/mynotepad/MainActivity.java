@@ -18,12 +18,9 @@ import com.example.mynotepad.fragments.LoginFragment;
 import com.example.mynotepad.fragments.MainFragment;
 import com.example.mynotepad.fragments.NotesFragment;
 import com.example.mynotepad.fragments.SearchFragment;
-import com.example.mynotepad.intefaces.IDataSource;
-import com.example.mynotepad.intefaces.IDrawerHeaderHandler;
-import com.example.mynotepad.pojo.User;
+import com.example.mynotepad.interfaces.IDrawerHeaderHandler;
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements IDrawerHeaderHandler {
