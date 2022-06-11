@@ -11,6 +11,11 @@
         android:title="@string/notes" />
 
     <item
+        android:id="@+id/drawer_cities"
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:title="@string/cities" />
+
+    <item
         android:id="@+id/drawer_sitings"
         android:icon="@android:drawable/ic_menu_preferences"
         android:title="@string/sitings" />

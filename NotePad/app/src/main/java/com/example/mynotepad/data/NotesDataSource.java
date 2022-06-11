@@ -1,13 +1,13 @@
 package com.example.mynotepad.data;
 
-import com.example.mynotepad.interfaces.IDataSource;
+import com.example.mynotepad.interfaces.INotesDataSource;
 import com.example.mynotepad.pojo.Note;
 
 import java.util.ArrayList;
 
-public class DataSource implements IDataSource {
+public class NotesDataSource implements INotesDataSource {
 
-    private static DataSource dataSource;
+    private static NotesDataSource dataSource;
     private ArrayList<Note> notesList = new ArrayList<>();
 
     @Override
@@ -15,13 +15,13 @@ public class DataSource implements IDataSource {
         return notesList;
     }
 
-    private DataSource() {
+    private NotesDataSource() {
 
     }
 
-    public static DataSource getInstance() {
+    public static NotesDataSource getInstance() {
         if (dataSource == null) {
-            dataSource = new DataSource();
+            dataSource = new NotesDataSource();
         }
         return dataSource;
     }

@@ -20,8 +20,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.mynotepad.R;
-import com.example.mynotepad.data.DataSource;
-import com.example.mynotepad.interfaces.IDataSource;
+import com.example.mynotepad.data.NotesDataSource;
+import com.example.mynotepad.interfaces.INotesDataSource;
 import com.example.mynotepad.pojo.Note;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -29,11 +29,11 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.Calendar;
 import java.util.Collections;
 
-public class CreateNoteFragment extends Fragment implements DatePickerDialog.OnDateSetListener{
+public class CreateNoteFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
 
     private EditText title;
     private EditText text;
-    private IDataSource dataSource = DataSource.getInstance();
+    private INotesDataSource dataSource = NotesDataSource.getInstance();
     private MaterialButton dateButton;
 
 

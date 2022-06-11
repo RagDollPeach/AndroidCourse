@@ -5,9 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,15 +17,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mynotepad.R;
 import com.example.mynotepad.adpter.NoteAdapter;
-import com.example.mynotepad.data.DataSource;
-import com.example.mynotepad.interfaces.IDataSource;
+import com.example.mynotepad.data.NotesDataSource;
+import com.example.mynotepad.interfaces.INotesDataSource;
 import com.example.mynotepad.interfaces.RvOnClickListener;
 import com.example.mynotepad.pojo.Note;
 
 public class NotesFragment extends Fragment implements RvOnClickListener {
 
     private CreateNoteFragment fragment;
-    private IDataSource dataSource = DataSource.getInstance();
+    private INotesDataSource dataSource = NotesDataSource.getInstance();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,8 @@ public class NotesFragment extends Fragment implements RvOnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Toolbar toolbar = requireActivity().findViewById(R.id.tool_bar);
+        toolbar.setTitle("Заметки");
         return inflater.inflate(R.layout.fragment_notes, container, false);
     }
 

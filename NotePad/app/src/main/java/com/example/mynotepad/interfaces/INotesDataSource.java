@@ -4,7 +4,7 @@ import com.example.mynotepad.pojo.Note;
 
 import java.util.ArrayList;
 
-public interface IDataSource {
+public interface INotesDataSource {
 
     ArrayList<Note> getNotesList();
 
