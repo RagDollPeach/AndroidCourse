@@ -1,5 +1,6 @@
 package com.example.mynotepad.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,7 +55,7 @@ public class NotesFragment extends Fragment implements RvOnClickListener {
         adapter.setRvOnClickListener(NotesFragment.this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
-        recyclerView.scrollToPosition(dataSource.getNotesList().size() - 1);
+        recyclerView.post(() -> recyclerView.smoothScrollToPosition(adapter.getItemCount()));
     }
 
     public void enableFragment(Fragment fragment, String fragmentName) {

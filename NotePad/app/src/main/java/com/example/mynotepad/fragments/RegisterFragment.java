@@ -26,13 +26,11 @@ import com.example.mynotepad.interfaces.UserInterface;
 import com.example.mynotepad.pojo.User;
 import com.google.android.material.button.MaterialButton;
 
-import java.util.ArrayList;
-
 public class RegisterFragment extends Fragment {
 
     private User user;
 
-    private UserInterface dataSource = UsersDataSource.getInstance();
+    private final UserInterface dataSource = UsersDataSource.getInstance();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

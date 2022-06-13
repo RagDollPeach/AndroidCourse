@@ -33,8 +33,8 @@ import java.util.List;
 
 public class LoginFragment extends Fragment {
 
-    EditText login;
-    EditText password;
+    private EditText login;
+    private EditText password;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,8 +50,6 @@ public class LoginFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_login, container, false);
     }
 
-
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -89,8 +87,8 @@ public class LoginFragment extends Fragment {
                     }
                 }
                 Toast.makeText(requireContext(), "Токого пользователя нет, зарегестрируйтесь", Toast.LENGTH_LONG).show();
+                hideKeyboard(requireActivity());
             }
-            hideKeyboard(requireActivity());
         });
 
         MaterialButton registerButton = view.findViewById(R.id.register_button);

@@ -18,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mynotepad.R;
 import com.example.mynotepad.data.NotesDataSource;
@@ -85,7 +86,6 @@ public class CreateNoteFragment extends Fragment implements DatePickerDialog.OnD
                     Note note = new Note(textTitle, textNote, createdTime);
                     dataSource.removeNote(bundleNote);
                     dataSource.addNote(note);
-                    Collections.sort(dataSource.getNotesList());
 
                     Snackbar.make(view, "Заметка записана", Snackbar.LENGTH_SHORT)
                             .setAction("push me", view2 -> Toast.makeText(view2.getContext()
@@ -108,7 +108,6 @@ public class CreateNoteFragment extends Fragment implements DatePickerDialog.OnD
                 } else {
                     Note note = new Note(textTitle, textNote, createdTime);
                     dataSource.addNote(note);
-                    Collections.sort(dataSource.getNotesList());
 
                     Snackbar.make(view, "Заметка записана", Snackbar.LENGTH_SHORT)
                             .setAction("push me", view2 -> Toast.makeText(view2.getContext()
