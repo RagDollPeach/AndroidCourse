@@ -1,11 +1,11 @@
 package com.example.mynotepad.fragments;
 
-import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,11 +22,15 @@ import com.example.mynotepad.data.NotesDataSource;
 import com.example.mynotepad.interfaces.INotesDataSource;
 import com.example.mynotepad.interfaces.RvOnClickListener;
 import com.example.mynotepad.pojo.Note;
+import com.google.gson.GsonBuilder;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class NotesFragment extends Fragment implements RvOnClickListener {
 
     private CreateNoteFragment fragment;
-    private INotesDataSource dataSource = NotesDataSource.getInstance();
+    private final INotesDataSource dataSource = NotesDataSource.getInstance();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,11 +52,28 @@ public class NotesFragment extends Fragment implements RvOnClickListener {
         fragment = new CreateNoteFragment();
         RecyclerView recyclerView = view.findViewById(R.id.recycler);
 
+        SharedPreferences pref = requireActivity().getSharedPreferences(LoginFragment.loginKey + "prefs", Context.MODE_PRIVATE);
+        Set<String> notesList = new HashSet<>();
+        if (!dataSource.getNotesList().isEmpty()) {
+            for (Note note : dataSource.getNotesList()) {
+                String notePref = new GsonBuilder().create().toJson(note);
+                notesList.add(notePref);
+            }
+            pref.edit().putStringSet(LoginFragment.loginKey + "prefs", notesList).apply();
+        }
+
+        if (dataSource.getNotesList().isEmpty()) {
+            for (String str : pref.getStringSet(LoginFragment.loginKey + "prefs", notesList)) {
+                Note note = new GsonBuilder().create().fromJson(str, Note.class);
+                dataSource.addNote(note);
+            }
+        }
         newNoteButton.setOnClickListener(view1 -> enableFragment(fragment, "fragment_create_note"));
 
         NoteAdapter adapter = new NoteAdapter();
         adapter.setNotesList(dataSource.getNotesList());
         adapter.setRvOnClickListener(NotesFragment.this);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
         recyclerView.post(() -> recyclerView.smoothScrollToPosition(adapter.getItemCount()));

@@ -18,7 +18,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mynotepad.R;
 import com.example.mynotepad.data.NotesDataSource;
@@ -28,15 +27,12 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
-import java.util.Collections;
 
 public class CreateNoteFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
 
     private EditText title;
     private EditText text;
-    private INotesDataSource dataSource = NotesDataSource.getInstance();
-    private MaterialButton dateButton;
-
+    private final INotesDataSource dataSource = NotesDataSource.getInstance();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,7 +59,7 @@ public class CreateNoteFragment extends Fragment implements DatePickerDialog.OnD
         super.onViewCreated(view, savedInstanceState);
         title = view.findViewById(R.id.title_input);
         text = view.findViewById(R.id.note_input);
-        dateButton = view.findViewById(R.id.date_button);
+        MaterialButton dateButton = view.findViewById(R.id.date_button);
         MaterialButton saveButton = view.findViewById(R.id.save_button);
 
         Bundle bundle = getArguments();
@@ -75,6 +71,7 @@ public class CreateNoteFragment extends Fragment implements DatePickerDialog.OnD
             saveButton.setOnClickListener(view1 -> {
                 String textTitle = title.getText().toString();
                 String textNote = text.getText().toString();
+
                 long createdTime = System.currentTimeMillis();
 
                 if (textTitle.equals("")) {

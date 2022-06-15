@@ -3,6 +3,7 @@ package com.example.mynotepad.adpter;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mynotepad.R;
+import com.example.mynotepad.fragments.LoginFragment;
 import com.example.mynotepad.interfaces.RvOnClickListener;
 import com.example.mynotepad.pojo.Note;
+import com.google.gson.GsonBuilder;
 
 import java.text.DateFormat;
 import java.util.List;
@@ -74,9 +77,16 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
                 .setIcon(R.drawable.star)
                 .setCancelable(false)
                 .setPositiveButton("Да", (dialogInterface, i) -> {
-                    Toast.makeText(context, "Заметка удалена", Toast.LENGTH_SHORT).show();
+                    SharedPreferences preferences = context.getSharedPreferences(LoginFragment.loginKey + "prefs", Context.MODE_PRIVATE);
+                    for (String str : preferences.getStringSet(LoginFragment.loginKey + "prefs", null)) {
+                        String note = new GsonBuilder().create().toJson(notesList.get(position));
+                        if (str.equals(note)) {
+                            preferences.edit().remove(LoginFragment.loginKey + "prefs").apply();
+                        }
+                    }
                     notesList.remove(position);
                     notifyItemRemoved(position);
+                    Toast.makeText(context, "Заметка удалена", Toast.LENGTH_SHORT).show();
                 })
                 .setNegativeButton("Нет", (dialogInterface, i)
                         -> Toast.makeText(context, "Заметка не удалена", Toast.LENGTH_SHORT).show())
@@ -92,6 +102,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
                 .setPositiveButton("Да", (dialogInterface, i) -> {
                     Toast.makeText(context, "Заметки удалены", Toast.LENGTH_SHORT).show();
                     notesList.clear();
+                    SharedPreferences preferences = context.getSharedPreferences(LoginFragment.loginKey + "prefs", Context.MODE_PRIVATE);
+                    preferences.edit().clear().apply();
                     notifyDataSetChanged();
                 })
                 .setNegativeButton("Нет", (dialogInterface, i)
