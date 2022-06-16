@@ -52,7 +52,8 @@ public class NotesFragment extends Fragment implements RvOnClickListener {
         fragment = new CreateNoteFragment();
         RecyclerView recyclerView = view.findViewById(R.id.recycler);
 
-        SharedPreferences pref = requireActivity().getSharedPreferences(LoginFragment.loginKey + "prefs", Context.MODE_PRIVATE);
+        SharedPreferences pref = requireActivity()
+                .getSharedPreferences(LoginFragment.loginKey + "prefs", Context.MODE_PRIVATE);
         Set<String> notesList = new HashSet<>();
         if (!dataSource.getNotesList().isEmpty()) {
             for (Note note : dataSource.getNotesList()) {
@@ -68,7 +69,7 @@ public class NotesFragment extends Fragment implements RvOnClickListener {
                 dataSource.addNote(note);
             }
         }
-        newNoteButton.setOnClickListener(view1 -> enableFragment(fragment, "fragment_create_note"));
+        newNoteButton.setOnClickListener(view1 -> enableFragment(fragment));
 
         NoteAdapter adapter = new NoteAdapter();
         adapter.setNotesList(dataSource.getNotesList());
@@ -79,11 +80,11 @@ public class NotesFragment extends Fragment implements RvOnClickListener {
         recyclerView.post(() -> recyclerView.smoothScrollToPosition(adapter.getItemCount()));
     }
 
-    public void enableFragment(Fragment fragment, String fragmentName) {
+    private void enableFragment(Fragment fragment) {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragment)
-                .addToBackStack(fragmentName)
+                .addToBackStack("fragment_create_note")
                 .commit();
     }
 
@@ -93,6 +94,6 @@ public class NotesFragment extends Fragment implements RvOnClickListener {
         Bundle bundle = new Bundle();
         bundle.putParcelable("note", note);
         fragment.setArguments(bundle);
-        enableFragment(fragment, "fragment_create_note");
+        enableFragment(fragment);
     }
 }

@@ -31,4 +31,5 @@
     <string name="password">Password</string>
     <string name="register_button">Зарегистрироваться</string>
     <string name="cities">Города</string>
+    <string name="note_name">Название заметки</string>
 </resources>

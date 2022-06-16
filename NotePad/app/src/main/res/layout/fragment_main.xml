@@ -25,45 +25,45 @@
             android:id="@+id/material_button_note"
             style="@style/my_buttons_style"
             android:text="@string/notes"
-            app:cornerRadius="15dp"
+            app:cornerRadius="10dp"
             app:icon="@android:drawable/ic_menu_edit"
             app:iconSize="20dp"
             app:iconTint="@color/black"
             app:strokeColor="@color/green"
-            app:strokeWidth="2dp" />
+            app:strokeWidth="1dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/material_button_cities"
             style="@style/my_buttons_style"
             android:text="@string/city_list"
-            app:cornerRadius="15dp"
+            app:cornerRadius="10dp"
             app:icon="@android:drawable/ic_menu_myplaces"
             app:iconSize="25dp"
             app:iconTint="@color/black"
             app:strokeColor="@color/green"
-            app:strokeWidth="2dp" />
+            app:strokeWidth="1dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/material_button_sitings"
             style="@style/my_buttons_style"
             android:text="@string/sitings"
-            app:cornerRadius="15dp"
+            app:cornerRadius="10dp"
             app:icon="@android:drawable/ic_menu_preferences"
             app:iconSize="25dp"
             app:iconTint="@color/black"
             app:strokeColor="@color/green"
-            app:strokeWidth="2dp" />
+            app:strokeWidth="1dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/material_button_photos"
             style="@style/my_buttons_style"
             android:text="@string/photos"
-            app:cornerRadius="15dp"
+            app:cornerRadius="10dp"
             app:icon="@android:drawable/ic_menu_gallery"
             app:iconSize="25dp"
             app:iconTint="@color/black"
             app:strokeColor="@color/green"
-            app:strokeWidth="2dp" />
+            app:strokeWidth="1dp" />
 
     </LinearLayout>
 </ScrollView>

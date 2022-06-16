@@ -52,21 +52,21 @@
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/save_button"
                 style="@style/my_buttons_style"
-                android:layout_marginEnd="15dp"
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginEnd="15dp"
                 android:text="@string/save"
                 app:cornerRadius="15dp"
                 app:strokeColor="@color/green"
-                app:strokeWidth="2dp" />
+                app:strokeWidth="1dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/date_button"
@@ -76,7 +76,7 @@
                 android:text="@string/insert_date"
                 app:cornerRadius="15dp"
                 app:strokeColor="@color/green"
-                app:strokeWidth="2dp" />
+                app:strokeWidth="1dp" />
 
         </LinearLayout>
     </LinearLayout>
