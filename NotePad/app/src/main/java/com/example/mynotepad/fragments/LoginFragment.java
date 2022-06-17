@@ -159,6 +159,7 @@ public class LoginFragment extends Fragment {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragment)
+                .addToBackStack("fragment_register")
                 .commit();
     }
 }

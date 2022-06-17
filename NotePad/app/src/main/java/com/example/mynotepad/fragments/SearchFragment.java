@@ -63,7 +63,7 @@ public class SearchFragment extends Fragment implements RvOnClickListener {
             }
             if (searchText.getText() != null) {
                 for (String s : str) {
-                    if (contains(s, searchText.getText().toString())) {
+                    if (findByLetters(s, searchText.getText().toString())) {
                         list.add(s);
                     }
                 }
@@ -75,9 +75,9 @@ public class SearchFragment extends Fragment implements RvOnClickListener {
         });
 
         listView.setOnItemClickListener((adapterView, view12, i, l) -> {
-            for (Note n : dataSource.getNotesList()) {
-                if (list.get(i).equals(n.getTitle())) {
-                    switchFragment(n);
+            for (Note note : dataSource.getNotesList()) {
+                if (list.get(i).equals(note.getTitle())) {
+                    switchFragment(note);
                 }
             }
         });
@@ -107,7 +107,7 @@ public class SearchFragment extends Fragment implements RvOnClickListener {
         }
     }
 
-    private boolean contains(String result, String key) {
+    private boolean findByLetters(String result, String key) {
         result = result.toLowerCase().trim();
         key = key.toLowerCase().trim();
 
