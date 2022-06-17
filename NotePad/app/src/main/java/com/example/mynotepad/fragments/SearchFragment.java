@@ -58,6 +58,7 @@ public class SearchFragment extends Fragment implements RvOnClickListener {
         List<String> list = new ArrayList<>();
 
         searchButton.setOnClickListener(view1 -> {
+            boolean flag = true;
             if (!list.isEmpty()) {
                 list.clear();
             }
@@ -65,12 +66,22 @@ public class SearchFragment extends Fragment implements RvOnClickListener {
                 for (String s : str) {
                     if (findByLetters(s, searchText.getText().toString())) {
                         list.add(s);
+                    } else {
+                        flag = false;
                     }
                 }
-                ArrayAdapter<Note> adapter = new ArrayAdapter(requireActivity(),
-                        android.R.layout.simple_list_item_1,
-                        list.toArray());
-                listView.setAdapter(adapter);
+                if (flag) {
+                    ArrayAdapter<Note> adapter = new ArrayAdapter(requireActivity(),
+                            android.R.layout.simple_list_item_1,
+                            list.toArray());
+                    listView.setAdapter(adapter);
+                } else {
+                    list.add("По этому запросу ни чего не найдено");
+                    ArrayAdapter<Note> adapter = new ArrayAdapter(requireActivity(),
+                            android.R.layout.simple_list_item_1,
+                            list.toArray());
+                    listView.setAdapter(adapter);
+                }
             }
         });
 
