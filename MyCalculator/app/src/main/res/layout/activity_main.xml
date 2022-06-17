@@ -2,10 +2,10 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollView2"
+    android:id="@+id/scroll_view"
+    android:background="@drawable/girl"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/girl">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
         tools:layout_editor_absoluteX="1dp">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/edit_text"
             style="@style/my_text_view_style"
             android:layout_width="match_parent"
             android:layout_margin="@dimen/edit_text_layout_margin_portrait"
@@ -31,7 +31,7 @@
             tools:ignore="DuplicateSpeakableTextCheck,LabelFor" />
 
         <TableLayout
-            android:id="@+id/tableLayout"
+            android:id="@+id/table_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/Table_layout_layout_margin_portrait"
@@ -174,28 +174,29 @@
                     android:text="@string/equals"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+                    app:layout_constraintTop_toBottomOf="@+id/table_layout" />
 
             </TableRow>
         </TableLayout>
 
         <RadioGroup
+            android:id="@+id/radio_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/radioButtonLight"
+                android:id="@+id/radio_button_light"
                 style="@style/my_radio_button_style"
                 android:text="@string/light_theme"
-                android:onClick="switchTheme"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:fontFamily="@font/amarante"/>
 
             <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/radioButtonNight"
-                android:onClick="switchTheme"
+                android:id="@+id/radio_button_night"
                 style="@style/my_radio_button_style"
                 android:text="@string/night_theme"
-                android:textColor="@color/red" />
+                android:textColor="@color/red"
+                android:fontFamily="@font/aguafina_script"/>
         </RadioGroup>
     </LinearLayout>
 </ScrollView>
