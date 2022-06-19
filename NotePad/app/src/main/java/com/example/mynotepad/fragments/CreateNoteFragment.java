@@ -99,7 +99,7 @@ public class CreateNoteFragment extends Fragment implements DatePickerDialog.OnD
                 long createdTime = System.currentTimeMillis();
 
                 if (textTitle.equals("")) {
-                    textTitle = "без названия...";
+                    textTitle = "No title";
                 }
                 if (textNote.equals("")) {
                     Toast.makeText(getContext(), "Напишите заметку", Toast.LENGTH_SHORT).show();

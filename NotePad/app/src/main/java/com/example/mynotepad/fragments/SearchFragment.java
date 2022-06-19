@@ -58,7 +58,6 @@ public class SearchFragment extends Fragment implements RvOnClickListener {
         List<String> list = new ArrayList<>();
 
         searchButton.setOnClickListener(view1 -> {
-            boolean flag = true;
             if (!list.isEmpty()) {
                 list.clear();
             }
@@ -66,11 +65,9 @@ public class SearchFragment extends Fragment implements RvOnClickListener {
                 for (String s : str) {
                     if (findByLetters(s, searchText.getText().toString())) {
                         list.add(s);
-                    } else {
-                        flag = false;
                     }
                 }
-                if (flag) {
+                if (!list.isEmpty()) {
                     ArrayAdapter<Note> adapter = new ArrayAdapter(requireActivity(),
                             android.R.layout.simple_list_item_1,
                             list.toArray());
@@ -124,7 +121,7 @@ public class SearchFragment extends Fragment implements RvOnClickListener {
 
         char[] letters = key.toCharArray();
         for (char c : letters) {
-            if (!result.contains(c + "")) {
+            if (!result.contains(String.valueOf(c))) {
                 return false;
             }
             result = result.substring(result.indexOf(c));
