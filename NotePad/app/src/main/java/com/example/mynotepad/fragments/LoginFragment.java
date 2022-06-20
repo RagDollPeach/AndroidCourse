@@ -71,6 +71,7 @@ public class LoginFragment extends Fragment {
         } else {
             loc.unLocDrawer();
         }
+
         UserInterface userData = UsersDataSource.getInstance();
         List<User> list = userData.userList();
 
@@ -94,7 +95,7 @@ public class LoginFragment extends Fragment {
             }
 
             if (preferences.getAll().isEmpty()) {
-                Toast.makeText(requireContext(), "Зарегистрируйтесь", Toast.LENGTH_LONG).show();
+                Toast.makeText(requireContext(), "Записей нет, зарегистрируйтесь", Toast.LENGTH_LONG).show();
             } else {
                 for (User user : list) {
                     if ((login.getText() != null) &&
@@ -146,7 +147,7 @@ public class LoginFragment extends Fragment {
     }
 
 
-    public static void hideKeyboard(Activity activity) {
+    private static void hideKeyboard(Activity activity) {
         InputMethodManager inputManager = (InputMethodManager) activity
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
         View currentFocusedView = activity.getCurrentFocus();
@@ -155,7 +156,7 @@ public class LoginFragment extends Fragment {
         }
     }
 
-    public void enableFragment(Fragment fragment) {
+    private void enableFragment(Fragment fragment) {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragment)

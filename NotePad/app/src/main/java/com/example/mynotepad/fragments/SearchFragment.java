@@ -54,29 +54,29 @@ public class SearchFragment extends Fragment implements RvOnClickListener {
 
         INotesDataSource dataSource = NotesDataSource.getInstance();
 
-        List<String> str = dataSource.getNotesList().stream().map(Note::getTitle).collect(Collectors.toList());
-        List<String> list = new ArrayList<>();
+        List<String> listOfTitles = dataSource.getNotesList().stream().map(Note::getTitle).collect(Collectors.toList());
+        List<String> listOfTitlesToView = new ArrayList<>();
 
         searchButton.setOnClickListener(view1 -> {
-            if (!list.isEmpty()) {
-                list.clear();
+            if (!listOfTitlesToView.isEmpty()) {
+                listOfTitlesToView.clear();
             }
             if (searchText.getText() != null) {
-                for (String s : str) {
+                for (String s : listOfTitles) {
                     if (findByLetters(s, searchText.getText().toString())) {
-                        list.add(s);
+                        listOfTitlesToView.add(s);
                     }
                 }
-                if (!list.isEmpty()) {
+                if (!listOfTitlesToView.isEmpty()) {
                     ArrayAdapter<Note> adapter = new ArrayAdapter(requireActivity(),
                             android.R.layout.simple_list_item_1,
-                            list.toArray());
+                            listOfTitlesToView.toArray());
                     listView.setAdapter(adapter);
                 } else {
-                    list.add("По этому запросу ни чего не найдено");
+                    listOfTitlesToView.add("По этому запросу ни чего не найдено");
                     ArrayAdapter<Note> adapter = new ArrayAdapter(requireActivity(),
                             android.R.layout.simple_list_item_1,
-                            list.toArray());
+                            listOfTitlesToView.toArray());
                     listView.setAdapter(adapter);
                 }
             }
@@ -84,7 +84,7 @@ public class SearchFragment extends Fragment implements RvOnClickListener {
 
         listView.setOnItemClickListener((adapterView, view12, i, l) -> {
             for (Note note : dataSource.getNotesList()) {
-                if (list.get(i).equals(note.getTitle())) {
+                if (listOfTitlesToView.get(i).equals(note.getTitle())) {
                     switchFragment(note);
                 }
             }

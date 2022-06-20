@@ -70,15 +70,15 @@ public class MainActivity extends AppCompatActivity implements IDrawerHeaderHand
             int id = item.getItemId();
             switch (id) {
                 case R.id.drawer_main:
-                    showAboutFragment(mainFragment);
+                    showFragment(mainFragment);
                     drawer.close();
                     return true;
                 case R.id.drawer_notes:
-                    showAboutFragment(new NotesFragment());
+                    showFragment(new NotesFragment());
                     drawer.close();
                     return true;
                 case R.id.drawer_cities:
-                    showAboutFragment(new CitiesFragment());
+                    showFragment(new CitiesFragment());
                     drawer.close();
                     return true;
                 case R.id.drawer_sitings:
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements IDrawerHeaderHand
                     drawer.close();
                     return true;
                 case R.id.drawer_about:
-                    showAboutFragment(new AboutFragment());
+                    showFragment(new AboutFragment());
                     drawer.close();
                     return true;
             }
@@ -105,13 +105,13 @@ public class MainActivity extends AppCompatActivity implements IDrawerHeaderHand
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_about:
-                showAboutFragment(new AboutFragment());
+                showFragment(new AboutFragment());
                 return true;
             case R.id.menu_login:
-                showAboutFragment(new LoginFragment());
+                showFragment(new LoginFragment());
                 return true;
             case R.id.menu_find:
-                showAboutFragment(new SearchFragment());
+                showFragment(new SearchFragment());
                 return true;
             case R.id.menu_exit:
                 finish();
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements IDrawerHeaderHand
         return super.onOptionsItemSelected(item);
     }
 
-    private void showAboutFragment(Fragment incomeFragment) {
+    private void showFragment(Fragment incomeFragment) {
         List<Fragment> fragments = getSupportFragmentManager().getFragments();
         boolean isAboutShow = false;
         for (Fragment fragment : fragments) {
