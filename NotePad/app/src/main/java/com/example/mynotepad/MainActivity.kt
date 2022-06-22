@@ -1,180 +1,157 @@
-package com.example.mynotepad;
+package com.example.mynotepad
 
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity
+import com.example.mynotepad.interfaces.DrawerLoc
+import com.example.mynotepad.fragments.MainFragment
+import androidx.drawerlayout.widget.DrawerLayout
+import android.os.Bundle
+import com.example.mynotepad.fragments.LoginFragment
+import android.annotation.SuppressLint
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.ActionBarDrawerToggle
+import com.google.android.material.navigation.NavigationView
+import com.example.mynotepad.fragments.NotesFragment
+import com.example.mynotepad.fragments.CitiesFragment
+import com.example.mynotepad.fragments.AboutFragment
+import com.example.mynotepad.fragments.SearchFragment
+import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
+import com.example.mynotepad.interfaces.IDrawerHeaderHandler
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
+class MainActivity : AppCompatActivity(), IDrawerHeaderHandler, DrawerLoc {
 
-import com.example.mynotepad.fragments.AboutFragment;
-import com.example.mynotepad.fragments.CitiesFragment;
-import com.example.mynotepad.fragments.LoginFragment;
-import com.example.mynotepad.fragments.MainFragment;
-import com.example.mynotepad.fragments.NotesFragment;
-import com.example.mynotepad.fragments.SearchFragment;
-import com.example.mynotepad.interfaces.DrawerLoc;
-import com.example.mynotepad.interfaces.IDrawerHeaderHandler;
-import com.google.android.material.navigation.NavigationView;
+    private lateinit var mainFragment: MainFragment
+    private lateinit var drawer: DrawerLayout
 
-import java.util.List;
-
-public class MainActivity extends AppCompatActivity implements IDrawerHeaderHandler, DrawerLoc {
-
-    private MainFragment mainFragment;
-    private DrawerLayout drawer;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        initActionBar();
-
-        mainFragment = new MainFragment();
-        LoginFragment loginFragment = new LoginFragment();
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragment_container, loginFragment)
-                .commit();
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        initActionBar()
+        mainFragment = MainFragment()
+        val loginFragment = LoginFragment()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, loginFragment)
+            .commit()
     }
 
-    private void initActionBar() {
-        Toolbar toolbar = findViewById(R.id.tool_bar);
-        setSupportActionBar(toolbar);
-        initDrawer(toolbar);
+    private fun initActionBar() {
+        val toolbar = findViewById<Toolbar>(R.id.tool_bar)
+        setSupportActionBar(toolbar)
+        initDrawer(toolbar)
     }
 
     @SuppressLint("NonConstantResourceId")
-    private void initDrawer(Toolbar toolbar) {
-        drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this
-                , drawer
-                , toolbar
-                , R.string.navigation_drawer_open
-                , R.string.navigation_drawer_close
-        );
-
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener(item -> {
-            int id = item.getItemId();
-            switch (id) {
-                case R.id.drawer_main:
-                    showFragment(mainFragment);
-                    drawer.close();
-                    return true;
-                case R.id.drawer_notes:
-                    showFragment(new NotesFragment());
-                    drawer.close();
-                    return true;
-                case R.id.drawer_cities:
-                    showFragment(new CitiesFragment());
-                    drawer.close();
-                    return true;
-                case R.id.drawer_sitings:
-                case R.id.drawer_photos:
-                    drawer.close();
-                    return true;
-                case R.id.drawer_about:
-                    showFragment(new AboutFragment());
-                    drawer.close();
-                    return true;
+    private fun initDrawer(toolbar: Toolbar) {
+        drawer = findViewById(R.id.drawer_layout)
+        val toggle = ActionBarDrawerToggle(
+            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        )
+        drawer?.addDrawerListener(toggle)
+        toggle.syncState()
+        val navigationView = findViewById<NavigationView>(R.id.navigation_view)
+        navigationView.setNavigationItemSelectedListener { item: MenuItem ->
+            when (item.itemId) {
+                R.id.drawer_main -> {
+                    showFragment(mainFragment)
+                    drawer.close()
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.drawer_notes -> {
+                    showFragment(NotesFragment())
+                    drawer.close()
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.drawer_cities -> {
+                    showFragment(CitiesFragment())
+                    drawer.close()
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.drawer_sitings, R.id.drawer_photos -> {
+                    drawer.close()
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.drawer_about -> {
+                    showFragment(AboutFragment())
+                    drawer.close()
+                    return@setNavigationItemSelectedListener true
+                }
             }
-            return false;
-        });
+            false
+        }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return super.onCreateOptionsMenu(menu);
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
     @SuppressLint("NonConstantResourceId")
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_about:
-                showFragment(new AboutFragment());
-                return true;
-            case R.id.menu_login:
-                showFragment(new LoginFragment());
-                return true;
-            case R.id.menu_find:
-                showFragment(new SearchFragment());
-                return true;
-            case R.id.menu_exit:
-                finish();
-                return true;
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_about -> {
+                showFragment(AboutFragment())
+                return true
+            }
+            R.id.menu_login -> {
+                showFragment(LoginFragment())
+                return true
+            }
+            R.id.menu_find -> {
+                showFragment(SearchFragment())
+                return true
+            }
+            R.id.menu_exit -> {
+                finish()
+                return true
+            }
         }
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item)
     }
 
-    private void showFragment(Fragment incomeFragment) {
-        List<Fragment> fragments = getSupportFragmentManager().getFragments();
-        boolean isAboutShow = false;
-        for (Fragment fragment : fragments) {
-            if ((fragment.getClass() == incomeFragment.getClass() && fragment.isVisible())) {
-                isAboutShow = true;
+    private fun showFragment(incomeFragment: Fragment?) {
+        val fragments = supportFragmentManager.fragments
+        var isAboutShow = false
+        for (fragment in fragments) {
+            if (fragment.javaClass == incomeFragment!!.javaClass && fragment.isVisible) {
+                isAboutShow = true
             }
         }
         if (!isAboutShow) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, incomeFragment)
-                    .addToBackStack(null)
-                    .commit();
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, incomeFragment!!)
+                .addToBackStack(null)
+                .commit()
         }
     }
 
-    @Override
-    public void setName(String name) {
-        TextView userName = findViewById(R.id.text_view_name);
-        userName.setText(name);
+    override fun setName(name: String) {
+        val userName = findViewById<TextView>(R.id.text_view_name)
+        userName.text = name
     }
 
-    @Override
-    public void setLastName(String lastName) {
-        TextView userLastName = findViewById(R.id.text_view_lastname);
-        userLastName.setText(lastName);
+    override fun setLastName(lastName: String) {
+        val userLastName = findViewById<TextView>(R.id.text_view_lastname)
+        userLastName.text = lastName
     }
 
-    @Override
-    public String getName() {
-        TextView userName = findViewById(R.id.text_view_name);
-        if (userName == null) {
-            return "Имя";
-        } else {
-            return userName.getText().toString();
-        }
+    override fun getName(): String {
+        val userName = findViewById<TextView>(R.id.text_view_name)
+        return userName?.text?.toString() ?: "Имя"
     }
 
-    @Override
-    public String getLastName() {
-        TextView userLastName = findViewById(R.id.text_view_lastname);
-        if (userLastName == null) {
-            return "Фамилия";
-        } else {
-            return userLastName.getText().toString();
-        }
+    override fun getLastName(): String {
+        val userLastName = findViewById<TextView>(R.id.text_view_lastname)
+        return userLastName?.text?.toString() ?: "Фамилия"
     }
 
-    @Override
-    public void locDrawer() {
-        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+    override fun locDrawer() {
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
     }
 
-    @Override
-    public void unLocDrawer() {
-        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+    override fun unLocDrawer() {
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
     }
 }

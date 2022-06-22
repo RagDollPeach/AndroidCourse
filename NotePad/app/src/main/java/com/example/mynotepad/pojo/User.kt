@@ -1,83 +1,37 @@
-package com.example.mynotepad.pojo;
+package com.example.mynotepad.pojo
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import android.os.Parcelable
+import android.os.Parcel
+import android.os.Parcelable.Creator
 
-public class User implements Parcelable {
+data class User(var name: String, var lastName: String, var login: String, var password: String) :
+    Parcelable {
 
-    private String name;
-    private String lastName;
-    private String login;
-    private String password;
+    constructor(parcel: Parcel) : this(
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString()
+    )
 
-    public User(String name, String lastName, String login, String password) {
-        this.name = name;
-        this.lastName = lastName;
-        this.login = login;
-        this.password = password;
+    override fun describeContents(): Int {
+        return -1
     }
 
-    protected User(Parcel in) {
-        name = in.readString();
-        lastName = in.readString();
-        login = in.readString();
-        password = in.readString();
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(name)
+        parcel.writeString(lastName)
+        parcel.writeString(login)
+        parcel.writeString(password)
     }
 
-    public static final Creator<User> CREATOR = new Creator<User>() {
-        @Override
-        public User createFromParcel(Parcel in) {
-            return new User(in);
+    companion object CREATOR : Creator<User> {
+        override fun createFromParcel(parcel: Parcel): User {
+            return User(parcel)
         }
 
-        @Override
-        public User[] newArray(int size) {
-            return new User[size];
+        override fun newArray(size: Int): Array<User?> {
+            return arrayOfNulls(size)
         }
-    };
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(name);
-        parcel.writeString(lastName);
-        parcel.writeString(login);
-        parcel.writeString(password);
     }
 }

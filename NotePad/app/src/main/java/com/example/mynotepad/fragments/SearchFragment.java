@@ -28,6 +28,7 @@ import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class SearchFragment extends Fragment implements RvOnClickListener {
@@ -54,7 +55,7 @@ public class SearchFragment extends Fragment implements RvOnClickListener {
 
         INotesDataSource dataSource = NotesDataSource.getInstance();
 
-        List<String> listOfTitles = dataSource.getNotesList().stream().map(Note::getTitle).collect(Collectors.toList());
+        List<String> listOfTitles = Objects.requireNonNull(dataSource.getNotesList()).stream().map(Note::getTitle).collect(Collectors.toList());
         List<String> listOfTitlesToView = new ArrayList<>();
 
         searchButton.setOnClickListener(view1 -> {

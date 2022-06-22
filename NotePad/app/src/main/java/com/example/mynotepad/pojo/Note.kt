@@ -1,76 +1,38 @@
-package com.example.mynotepad.pojo;
+package com.example.mynotepad.pojo
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import android.os.Parcelable
+import android.os.Parcel
+import android.os.Parcelable.Creator
 
-public class Note implements Comparable<Note>, Parcelable {
+data class Note(var title: String,var note: String,var date: Long) : Comparable<Note>, Parcelable {
 
-    private String title;
-    private String note;
-    private long date;
+    constructor(parcel: Parcel) : this(
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readLong()
+    )
 
-    public Note(String title, String note, long date) {
-        this.title = title;
-        this.note = note;
-        this.date = date;
+    override fun compareTo(other: Note): Int {
+        return this.title.compareTo(other.title)
     }
 
-    public Note(Parcel in) {
-        title = in.readString();
-        note = in.readString();
-        date = in.readLong();
+    override fun describeContents(): Int {
+      return -1
     }
 
-    public static final Creator<Note> CREATOR = new Creator<Note>() {
-        @Override
-        public Note createFromParcel(Parcel in) {
-            return new Note(in);
+    override fun writeToParcel(p0: Parcel?, p1: Int) {
+        p0?.writeString(title)
+        p0?.writeString(note)
+        p0?.writeLong(date)
+    }
+
+    companion object CREATOR : Creator<Note> {
+        override fun createFromParcel(parcel: Parcel): Note {
+            return Note(parcel)
         }
 
-        @Override
-        public Note[] newArray(int size) {
-            return new Note[size];
+        override fun newArray(size: Int): Array<Note?> {
+            return arrayOfNulls(size)
         }
-    };
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
-    }
-
-    public long getDate() {
-        return date;
-    }
-
-    public void setDate(long date) {
-        this.date = date;
-    }
-
-    @Override
-    public int compareTo(Note note) {
-        return this.getTitle().compareTo(note.getTitle());
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(title);
-        parcel.writeString(note);
-        parcel.writeLong(date);
     }
 }
