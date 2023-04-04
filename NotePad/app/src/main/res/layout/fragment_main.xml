@@ -21,25 +21,49 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/t_v_note"
-            style="@style/my_text_view_style"
-            android:text="@string/notes" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/material_button_note"
+            style="@style/my_buttons_style"
+            android:text="@string/notes"
+            app:cornerRadius="15dp"
+            app:icon="@android:drawable/ic_menu_edit"
+            app:iconSize="20dp"
+            app:iconTint="@color/black"
+            app:strokeColor="@color/green"
+            app:strokeWidth="2dp" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/t_v_city"
-            style="@style/my_text_view_style"
-            android:text="@string/city_list" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/material_button_cities"
+            style="@style/my_buttons_style"
+            android:text="@string/city_list"
+            app:cornerRadius="15dp"
+            app:icon="@android:drawable/ic_menu_myplaces"
+            app:iconSize="25dp"
+            app:iconTint="@color/black"
+            app:strokeColor="@color/green"
+            app:strokeWidth="2dp" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/t_v_sitings"
-            style="@style/my_text_view_style"
-            android:text="@string/sitings" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/material_button_sitings"
+            style="@style/my_buttons_style"
+            android:text="@string/sitings"
+            app:cornerRadius="15dp"
+            app:icon="@android:drawable/ic_menu_preferences"
+            app:iconSize="25dp"
+            app:iconTint="@color/black"
+            app:strokeColor="@color/green"
+            app:strokeWidth="2dp" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/t_v_about"
-            style="@style/my_text_view_style"
-            android:text="@string/about" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/material_button_photos"
+            style="@style/my_buttons_style"
+            android:text="@string/photos"
+            app:cornerRadius="15dp"
+            app:icon="@android:drawable/ic_menu_gallery"
+            app:iconSize="25dp"
+            app:iconTint="@color/black"
+            app:strokeColor="@color/green"
+            app:strokeWidth="2dp" />
 
     </LinearLayout>
 </ScrollView>

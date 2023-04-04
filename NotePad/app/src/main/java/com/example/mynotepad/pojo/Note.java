@@ -1,8 +1,8 @@
-package com.example.mynotepad;
+package com.example.mynotepad.pojo;
 
 import java.io.Serializable;
 
-public class Note implements Serializable {
+public class Note implements Serializable, Comparable<Note> {
 
     private String title;
     private String note;
@@ -36,5 +36,10 @@ public class Note implements Serializable {
 
     public void setDate(long date) {
         this.date = date;
+    }
+
+    @Override
+    public int compareTo(Note note) {
+        return this.getName().compareTo(note.getName());
     }
 }

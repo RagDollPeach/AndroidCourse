@@ -1,4 +1,4 @@
-package com.example.mynotepad;
+package com.example.mynotepad.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.mynotepad.R;
+import com.example.mynotepad.adpter.MyAdapter;
+import com.example.mynotepad.fragments.CreateNoteFragment;
+import com.example.mynotepad.pojo.Note;
 
 import java.util.List;
 
@@ -41,6 +46,7 @@ public class NotesFragment extends Fragment {
         MyAdapter myAdapter = new MyAdapter(getContext(), notes);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(myAdapter);
+
     }
 
     public void enableFragment(Fragment note, String fragmentName) {
@@ -50,4 +56,5 @@ public class NotesFragment extends Fragment {
                 .addToBackStack(fragmentName)
                 .commit();
     }
+
 }

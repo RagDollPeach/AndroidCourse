@@ -1,4 +1,4 @@
-package com.example.mynotepad;
+package com.example.mynotepad.adpter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.mynotepad.fragments.CreateNoteFragment;
+import com.example.mynotepad.R;
+import com.example.mynotepad.pojo.Note;
 
 import java.text.DateFormat;
 import java.util.List;
@@ -27,7 +31,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.note_view, parent, false));
+        return new MyViewHolder(LayoutInflater.from(context)
+                .inflate(R.layout.note_view, parent, false));
     }
 
     @Override
@@ -41,8 +46,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         holder.itemView.setOnLongClickListener(view -> {
             PopupMenu menu = new PopupMenu(context, view);
+            menu.getMenu().add("Поделится");
             menu.getMenu().add("Удалить");
-            menu.getMenu().add("Редактировать");
             menu.setOnMenuItemClickListener(menuItem -> {
                 if (menuItem.getTitle().equals("Удалить")) {
                     CreateNoteFragment.notesList.remove(position);

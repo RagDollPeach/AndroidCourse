@@ -1,4 +1,5 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
@@ -18,28 +19,23 @@
             android:gravity="center"
             android:text="@string/notes"
             android:textColor="@color/black"
-            android:textSize="28sp"
+            android:textSize="34sp"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
             android:layout_width="match_parent"
-            android:layout_height="400dp" />
+            android:layout_height="350dp" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/new_note_button"
+            style="@style/my_buttons_style"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/round_buttons"
-            android:fontFamily="@font/torhok"
-            android:padding="10dp"
             android:text="@string/new_note"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="28sp"
-            android:textStyle="bold" />
+            app:cornerRadius="10dp"
+            app:strokeColor="@color/green"
+            app:strokeWidth="2dp" />
 
     </LinearLayout>
 </ScrollView>

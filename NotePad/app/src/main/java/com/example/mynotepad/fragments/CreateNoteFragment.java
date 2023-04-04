@@ -1,10 +1,15 @@
-package com.example.mynotepad;
+package com.example.mynotepad.fragments;
 
-import android.graphics.Color;
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -13,7 +18,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
+import com.example.mynotepad.R;
+import com.example.mynotepad.pojo.Note;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CreateNoteFragment extends Fragment {
@@ -31,7 +40,16 @@ public class CreateNoteFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_create_note, container, false);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        MenuItem item = menu.findItem(R.id.menu_find);
+        if (item != null) {
+            item.setVisible(false);
+        }
     }
 
     @Override
@@ -48,13 +66,24 @@ public class CreateNoteFragment extends Fragment {
                 textTitle = "без названия...";
             }
             if (textNote.equals("")) {
-                text.setHint("Напишите заметку");
+                Toast.makeText(getContext(), "Напишите заметку", Toast.LENGTH_SHORT).show();
             } else {
                 Note note = new Note(textTitle, textNote, createdTime);
                 notesList.add(note);
+                Collections.sort(notesList);
                 Toast.makeText(getContext(), "Заметка записана", Toast.LENGTH_SHORT).show();
+                hideKeyboard(requireActivity());
                 requireActivity().getSupportFragmentManager().popBackStack();
             }
         });
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager inputManager = (InputMethodManager) activity
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
+        View currentFocusedView = activity.getCurrentFocus();
+        if (currentFocusedView != null) {
+            inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
     }
 }

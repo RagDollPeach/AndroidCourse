@@ -1,4 +1,4 @@
-package com.example.mynotepad;
+package com.example.mynotepad.pojo;
 
 import java.io.Serializable;
 
