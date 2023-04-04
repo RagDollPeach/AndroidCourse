@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MyNotePad</string>
+    <string name="notes">Создать заметку</string>
+    <string name="favorite">Заметки</string>
+    <string name="inserts">Прикрепить</string>
+    <string name="reminders">Напоминания</string>
+    <string name="basket">Удалить</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save">Записать</string>
+    <string name="note_title">Название</string>
+    <string name="back">Назад</string>
+    <string name="text">Текст</string>
+</resources>
