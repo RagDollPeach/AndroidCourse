@@ -14,13 +14,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mynotepad.R;
-import com.example.mynotepad.adpter.MyAdapter;
-import com.example.mynotepad.fragments.CreateNoteFragment;
+import com.example.mynotepad.intefaces.RvOnClickListener;
+import com.example.mynotepad.adpter.NoteAdapter;
 import com.example.mynotepad.pojo.Note;
 
-import java.util.List;
+public class NotesFragment extends Fragment implements RvOnClickListener {
 
-public class NotesFragment extends Fragment {
+    private CreateNoteFragment fragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,24 +37,33 @@ public class NotesFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         AppCompatButton newNoteButton = view.findViewById(R.id.new_note_button);
-        CreateNoteFragment fragment = new CreateNoteFragment();
+        fragment = new CreateNoteFragment();
         RecyclerView recyclerView = view.findViewById(R.id.recycler);
 
         newNoteButton.setOnClickListener(view1 -> enableFragment(fragment, "fragment_create_note"));
-        List<Note> notes = CreateNoteFragment.notesList;
 
-        MyAdapter myAdapter = new MyAdapter(getContext(), notes);
+        NoteAdapter adapter = new NoteAdapter();
+        adapter.setNotesList(CreateNoteFragment.notesList);
+        adapter.setRvOnClickListener(NotesFragment.this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(myAdapter);
-
+        recyclerView.setAdapter(adapter);
     }
 
-    public void enableFragment(Fragment note, String fragmentName) {
+    public void enableFragment(Fragment fragment, String fragmentName) {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, note)
+                .replace(R.id.fragment_container, fragment)
                 .addToBackStack(fragmentName)
                 .commit();
     }
 
+
+    @Override
+    public void switchFragment(Note note) {
+        CreateNoteFragment fragment = new CreateNoteFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("note", note);
+        fragment.setArguments(bundle);
+        enableFragment(fragment, "fragment_create_note");
+    }
 }

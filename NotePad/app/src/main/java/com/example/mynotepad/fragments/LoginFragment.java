@@ -53,7 +53,7 @@ public class LoginFragment extends Fragment {
         backButton.setOnClickListener(view1 -> requireActivity().getSupportFragmentManager().popBackStack());
 
         loginButton.setOnClickListener(view1 -> {
-            Toast.makeText(getContext(), "Ну типо авторизовался :D", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "You are logged in", Toast.LENGTH_SHORT).show();
             hideKeyboard(requireActivity());
             requireActivity().getSupportFragmentManager().popBackStack();
         });

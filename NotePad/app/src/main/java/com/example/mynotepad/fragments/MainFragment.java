@@ -41,7 +41,6 @@ public class MainFragment extends Fragment {
 
         notes.setOnClickListener(view1 -> enableFragment(notesFragment, "fragment_note"));
         cities.setOnClickListener(view1 -> enableFragment(cityFragment, "fragment_cities"));
-
     }
 
     @Override

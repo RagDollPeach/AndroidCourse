@@ -1,8 +1,9 @@
 package com.example.mynotepad.pojo;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Note implements Serializable, Comparable<Note> {
+public class Note implements Comparable<Note>, Parcelable {
 
     private String title;
     private String note;
@@ -14,12 +15,30 @@ public class Note implements Serializable, Comparable<Note> {
         this.date = date;
     }
 
-    public String getName() {
+    public Note(Parcel in) {
+        title = in.readString();
+        note = in.readString();
+        date = in.readLong();
+    }
+
+    public static final Creator<Note> CREATOR = new Creator<Note>() {
+        @Override
+        public Note createFromParcel(Parcel in) {
+            return new Note(in);
+        }
+
+        @Override
+        public Note[] newArray(int size) {
+            return new Note[size];
+        }
+    };
+
+    public String getTitle() {
         return title;
     }
 
-    public void setName(String name) {
-        this.title = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getNote() {
@@ -40,6 +59,18 @@ public class Note implements Serializable, Comparable<Note> {
 
     @Override
     public int compareTo(Note note) {
-        return this.getName().compareTo(note.getName());
+        return this.getTitle().compareTo(note.getTitle());
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(title);
+        parcel.writeString(note);
+        parcel.writeLong(date);
     }
 }
