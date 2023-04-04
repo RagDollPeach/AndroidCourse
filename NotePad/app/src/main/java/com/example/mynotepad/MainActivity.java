@@ -1,5 +1,6 @@
 package com.example.mynotepad;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 
@@ -13,9 +14,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppCompatTextView view;
-    public static List<String> list = new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,9 +24,17 @@ public class MainActivity extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.fragment_container, mainFragment)
                 .commit();
+    }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle bundle) {
+        super.onSaveInstanceState(bundle);
 
     }
 
+    @Override
+    public void onRestoreInstanceState(@NonNull Bundle bundle) {
+        super.onRestoreInstanceState(bundle);
 
+    }
 }

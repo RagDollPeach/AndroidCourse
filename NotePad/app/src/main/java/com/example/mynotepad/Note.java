@@ -1,15 +1,17 @@
 package com.example.mynotepad;
 
-import java.time.LocalDate;
+import java.io.Serializable;
 
-
-public class Note {
+public class Note implements Serializable {
 
     private String title;
     private String note;
-    private LocalDate date;
+    private long date;
 
-    public Note() {
+    public Note(String title, String note, long date) {
+        this.title = title;
+        this.note = note;
+        this.date = date;
     }
 
     public String getName() {
@@ -28,11 +30,11 @@ public class Note {
         this.note = note;
     }
 
-    public LocalDate getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(long date) {
         this.date = date;
     }
 }

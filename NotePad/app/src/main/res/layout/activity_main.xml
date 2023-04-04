@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:background="@drawable/sky">
 
     <LinearLayout
         android:id="@+id/fragment_container"
@@ -11,27 +11,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:context=".MainActivity">
-
-        <fragment
-            android:id="@+id/main_fragment"
-            android:name="com.example.mynotepad.MainFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout="@layout/fragment_main"/>
-
-        <fragment
-            android:id="@+id/create_note"
-            android:name="com.example.mynotepad.CreateNoteFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout="@layout/fragment_create_note" />
-
-        <fragment
-            android:id="@+id/notes"
-            android:name="com.example.mynotepad.ReadNoteFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout="@layout/fragment_read_note"/>
 
     </LinearLayout>
 </ScrollView>
