@@ -10,11 +10,6 @@ public class NotesDataSource implements INotesDataSource {
     private static NotesDataSource dataSource;
     private ArrayList<Note> notesList = new ArrayList<>();
 
-    @Override
-    public ArrayList<Note> getNotesList() {
-        return notesList;
-    }
-
     private NotesDataSource() {
 
     }
@@ -24,6 +19,11 @@ public class NotesDataSource implements INotesDataSource {
             dataSource = new NotesDataSource();
         }
         return dataSource;
+    }
+
+    @Override
+    public ArrayList<Note> getNotesList() {
+        return notesList;
     }
 
     @Override

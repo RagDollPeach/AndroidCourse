@@ -58,7 +58,7 @@ public class MainFragment extends Fragment {
         }
     }
 
-    public void enableFragment(Fragment note, String fragmentName) {
+    private void enableFragment(Fragment note, String fragmentName) {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, note)

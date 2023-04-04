@@ -81,13 +81,13 @@ public class RegisterFragment extends Fragment {
                             , password.getText().toString());
                     dataSource.addUser(user);
                     hideKeyboard(requireActivity());
-                    enableFragment(new LoginFragment(), "fragment_login");
+                    enableFragment(new LoginFragment());
                 }
             }
         });
     }
 
-    public static void hideKeyboard(Activity activity) {
+    private static void hideKeyboard(Activity activity) {
         InputMethodManager inputManager = (InputMethodManager) activity
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
         View currentFocusedView = activity.getCurrentFocus();
@@ -97,11 +97,11 @@ public class RegisterFragment extends Fragment {
         }
     }
 
-    public void enableFragment(Fragment fragment, String fragmentName) {
+    private void enableFragment(Fragment fragment) {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragment)
-                .addToBackStack(fragmentName)
+                .addToBackStack("fragment_login")
                 .commit();
     }
 }

@@ -18,7 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.mynotepad.R;
 import com.example.mynotepad.data.NotesDataSource;
@@ -28,15 +28,12 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
-import java.util.Collections;
 
 public class CreateNoteFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
 
     private EditText title;
     private EditText text;
-    private INotesDataSource dataSource = NotesDataSource.getInstance();
-    private MaterialButton dateButton;
-
+    private final INotesDataSource dataSource = NotesDataSource.getInstance();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,7 +60,7 @@ public class CreateNoteFragment extends Fragment implements DatePickerDialog.OnD
         super.onViewCreated(view, savedInstanceState);
         title = view.findViewById(R.id.title_input);
         text = view.findViewById(R.id.note_input);
-        dateButton = view.findViewById(R.id.date_button);
+        MaterialButton dateButton = view.findViewById(R.id.date_button);
         MaterialButton saveButton = view.findViewById(R.id.save_button);
 
         Bundle bundle = getArguments();
@@ -75,6 +72,7 @@ public class CreateNoteFragment extends Fragment implements DatePickerDialog.OnD
             saveButton.setOnClickListener(view1 -> {
                 String textTitle = title.getText().toString();
                 String textNote = text.getText().toString();
+
                 long createdTime = System.currentTimeMillis();
 
                 if (textTitle.equals("")) {
@@ -91,7 +89,7 @@ public class CreateNoteFragment extends Fragment implements DatePickerDialog.OnD
                             .setAction("push me", view2 -> Toast.makeText(view2.getContext()
                                     , "Thank you", Toast.LENGTH_SHORT).show()).show();
                     hideKeyboard(requireActivity());
-                    requireActivity().getSupportFragmentManager().popBackStack();
+                    enableFragment(new NotesFragment());
                 }
             });
         } else {
@@ -101,7 +99,7 @@ public class CreateNoteFragment extends Fragment implements DatePickerDialog.OnD
                 long createdTime = System.currentTimeMillis();
 
                 if (textTitle.equals("")) {
-                    textTitle = "без названия...";
+                    textTitle = "No title";
                 }
                 if (textNote.equals("")) {
                     Toast.makeText(getContext(), "Напишите заметку", Toast.LENGTH_SHORT).show();
@@ -109,12 +107,12 @@ public class CreateNoteFragment extends Fragment implements DatePickerDialog.OnD
                     Note note = new Note(textTitle, textNote, createdTime);
                     dataSource.addNote(note);
 
-                    Snackbar.make(view, "Заметка записана", Snackbar.LENGTH_SHORT)
+                    Snackbar.make(view, "Заметка записана", Snackbar.LENGTH_LONG)
                             .setAction("push me", view2 -> Toast.makeText(view2.getContext()
                                     , "Thank you", Toast.LENGTH_SHORT).show()).show();
 
                     hideKeyboard(requireActivity());
-                    requireActivity().getSupportFragmentManager().popBackStack();
+                    enableFragment(new NotesFragment());
                 }
             });
         }
@@ -128,7 +126,7 @@ public class CreateNoteFragment extends Fragment implements DatePickerDialog.OnD
         super.onDestroyView();
     }
 
-    public static void hideKeyboard(Activity activity) {
+    private static void hideKeyboard(Activity activity) {
         InputMethodManager inputManager = (InputMethodManager) activity
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
         View currentFocusedView = activity.getCurrentFocus();
@@ -152,5 +150,13 @@ public class CreateNoteFragment extends Fragment implements DatePickerDialog.OnD
         String date = text.getText().toString() + day + "/" + month + "/" + year;
         text.setText(date);
         text.setSelection(text.getText().length());
+    }
+
+    private void enableFragment(Fragment fragment) {
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .addToBackStack("fragment_create_note")
+                .commit();
     }
 }

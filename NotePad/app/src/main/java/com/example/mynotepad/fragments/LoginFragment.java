@@ -2,7 +2,7 @@ package com.example.mynotepad.fragments;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Build;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,25 +16,30 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.mynotepad.R;
+import com.example.mynotepad.data.NotesDataSource;
 import com.example.mynotepad.data.UsersDataSource;
 import com.example.mynotepad.interfaces.DrawerLoc;
 import com.example.mynotepad.interfaces.IDrawerHeaderHandler;
+import com.example.mynotepad.interfaces.INotesDataSource;
 import com.example.mynotepad.interfaces.UserInterface;
 import com.example.mynotepad.pojo.User;
 import com.google.android.material.button.MaterialButton;
+import com.google.gson.GsonBuilder;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class LoginFragment extends Fragment {
 
     private EditText login;
     private EditText password;
+    public static String loginKey;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,12 +71,31 @@ public class LoginFragment extends Fragment {
         } else {
             loc.unLocDrawer();
         }
+
         UserInterface userData = UsersDataSource.getInstance();
         List<User> list = userData.userList();
 
         loginButton.setOnClickListener(view1 -> {
+            loginKey = login.getText().toString();
+            SharedPreferences preferences = requireActivity()
+                    .getSharedPreferences(loginKey, Context.MODE_PRIVATE);
+
+            Set<String> usersList = new HashSet<>();
             if (list.isEmpty()) {
-                Toast.makeText(requireContext(), "Зарегистрируйтесь", Toast.LENGTH_LONG).show();
+                for (String str : preferences.getStringSet(loginKey, usersList)) {
+                    User user = new GsonBuilder().create().fromJson(str, User.class);
+                    list.add(user);
+                }
+            } else {
+                for (User u : list) {
+                    String str = new GsonBuilder().create().toJson(u);
+                    usersList.add(str);
+                }
+                preferences.edit().putStringSet(loginKey, usersList).apply();
+            }
+
+            if (preferences.getAll().isEmpty()) {
+                Toast.makeText(requireContext(), "Записей нет, зарегистрируйтесь", Toast.LENGTH_LONG).show();
             } else {
                 for (User user : list) {
                     if ((login.getText() != null) &&
@@ -80,8 +104,10 @@ public class LoginFragment extends Fragment {
 
                         activity.setName(user.getName());
                         activity.setLastName(user.getLastName());
+                        INotesDataSource dataSource = NotesDataSource.getInstance();
+                        dataSource.removeAll();
                         hideKeyboard(requireActivity());
-                        enableFragment(new MainFragment(), "fragment_main");
+                        enableFragment(new MainFragment());
                         Toast.makeText(requireContext(), "Авторизация успешна", Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -90,10 +116,8 @@ public class LoginFragment extends Fragment {
                 hideKeyboard(requireActivity());
             }
         });
-
         MaterialButton registerButton = view.findViewById(R.id.register_button);
-        registerButton.setOnClickListener(v -> enableFragment(new RegisterFragment(), "fragment_register"));
-
+        registerButton.setOnClickListener(v -> enableFragment(new RegisterFragment()));
     }
 
     @Override
@@ -122,7 +146,8 @@ public class LoginFragment extends Fragment {
         }
     }
 
-    public static void hideKeyboard(Activity activity) {
+
+    private static void hideKeyboard(Activity activity) {
         InputMethodManager inputManager = (InputMethodManager) activity
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
         View currentFocusedView = activity.getCurrentFocus();
@@ -131,12 +156,11 @@ public class LoginFragment extends Fragment {
         }
     }
 
-    public void enableFragment(Fragment fragment, String fragmentName) {
+    private void enableFragment(Fragment fragment) {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragment)
-                .addToBackStack(fragmentName)
+                .addToBackStack("fragment_register")
                 .commit();
-
     }
 }

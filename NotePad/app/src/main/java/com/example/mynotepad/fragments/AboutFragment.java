@@ -37,12 +37,7 @@ public class AboutFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         MaterialButton backButton = view.findViewById(R.id.about_back_button);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                requireActivity().getSupportFragmentManager().popBackStack();
-            }
-        });
+        backButton.setOnClickListener(view1 -> requireActivity().getSupportFragmentManager().popBackStack());
     }
 
     @Override
