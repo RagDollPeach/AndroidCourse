@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -13,19 +14,21 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.mynotepad.fragments.AboutFragment;
+import com.example.mynotepad.fragments.CitiesFragment;
 import com.example.mynotepad.fragments.LoginFragment;
 import com.example.mynotepad.fragments.MainFragment;
 import com.example.mynotepad.fragments.NotesFragment;
 import com.example.mynotepad.fragments.SearchFragment;
-import com.example.mynotepad.pojo.User;
+import com.example.mynotepad.interfaces.DrawerLoc;
+import com.example.mynotepad.interfaces.IDrawerHeaderHandler;
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements IDrawerHeaderHandler, DrawerLoc {
 
-    MainFragment mainFragment;
+    private MainFragment mainFragment;
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +38,10 @@ public class MainActivity extends AppCompatActivity {
         initActionBar();
 
         mainFragment = new MainFragment();
+        LoginFragment loginFragment = new LoginFragment();
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragment_container, mainFragment)
+                .replace(R.id.fragment_container, loginFragment)
                 .commit();
     }
 
@@ -49,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("NonConstantResourceId")
     private void initDrawer(Toolbar toolbar) {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this
                 , drawer
@@ -71,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.drawer_notes:
                     showAboutFragment(new NotesFragment());
+                    drawer.close();
+                    return true;
+                case R.id.drawer_cities:
+                    showAboutFragment(new CitiesFragment());
                     drawer.close();
                     return true;
                 case R.id.drawer_sitings:
@@ -126,5 +134,47 @@ public class MainActivity extends AppCompatActivity {
                     .addToBackStack(null)
                     .commit();
         }
+    }
+
+    @Override
+    public void setName(String name) {
+        TextView userName = findViewById(R.id.text_view_name);
+        userName.setText(name);
+    }
+
+    @Override
+    public void setLastName(String lastName) {
+        TextView userLastName = findViewById(R.id.text_view_lastname);
+        userLastName.setText(lastName);
+    }
+
+    @Override
+    public String getName() {
+        TextView userName = findViewById(R.id.text_view_name);
+        if (userName == null) {
+            return "Имя";
+        } else {
+            return userName.getText().toString();
+        }
+    }
+
+    @Override
+    public String getLastName() {
+        TextView userLastName = findViewById(R.id.text_view_lastname);
+        if (userLastName == null) {
+            return "Фамилия";
+        } else {
+            return userLastName.getText().toString();
+        }
+    }
+
+    @Override
+    public void locDrawer() {
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+    }
+
+    @Override
+    public void unLocDrawer() {
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
     }
 }

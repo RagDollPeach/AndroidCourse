@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -30,6 +31,8 @@ public class CitiesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
+        Toolbar toolbar = requireActivity().findViewById(R.id.tool_bar);
+        toolbar.setTitle("Города");
         return inflater.inflate(R.layout.fragment_cities, container, false);
     }
 
@@ -79,16 +82,6 @@ public class CitiesFragment extends Fragment {
     private void showCoatOfArms(City city) {
         showPortraitCoastOfArms(city);
     }
-
-//    private void showLandCoastOfArms(City city) {
-//        CoatOfArmsFragment coatOfArmsFragment = CoatOfArmsFragment.newInstance(city);
-//        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-//
-//        fragmentManager.beginTransaction()
-//                .replace(R.id.fragment_container, coatOfArmsFragment)
-//                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-//                .commit();
-//    }
 
     private void showPortraitCoastOfArms(City city) {
         CoatOfArmsFragment coatOfArmsFragment = CoatOfArmsFragment.newInstance(city);

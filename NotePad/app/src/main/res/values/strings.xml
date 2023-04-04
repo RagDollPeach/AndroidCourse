@@ -25,4 +25,10 @@
     <string name="main">Главная</string>
     <string name="find">Поиск</string>
     <string name="no_notes">Нет записей</string>
+    <string name="insert_date">Вставить дату</string>
+    <string name="register">Регистрация</string>
+    <string name="login_register">Login</string>
+    <string name="password">Password</string>
+    <string name="register_button">Зарегистрироваться</string>
+    <string name="cities">Города</string>
 </resources>

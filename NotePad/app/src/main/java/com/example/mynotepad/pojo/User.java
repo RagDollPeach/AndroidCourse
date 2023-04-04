@@ -7,15 +7,21 @@ public class User implements Parcelable {
 
     private String name;
     private String lastName;
+    private String login;
+    private String password;
 
-    public User(String name, String lastName) {
+    public User(String name, String lastName, String login, String password) {
         this.name = name;
         this.lastName = lastName;
+        this.login = login;
+        this.password = password;
     }
 
     protected User(Parcel in) {
         name = in.readString();
         lastName = in.readString();
+        login = in.readString();
+        password = in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -46,6 +52,22 @@ public class User implements Parcelable {
         this.lastName = lastName;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -55,5 +77,7 @@ public class User implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(name);
         parcel.writeString(lastName);
+        parcel.writeString(login);
+        parcel.writeString(password);
     }
 }
